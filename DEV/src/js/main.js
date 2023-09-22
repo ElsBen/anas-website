@@ -50,26 +50,11 @@ document.addEventListener('touchstart', function () {}, true);
 
 // BILDERGALERIE
 
-// Diesen teil auf das neue klassen system updaten!!!
-
-/*
-### Entweder verschiedene Arrays erstellen oder mit einer Schleife und einer Funktion Automatisch erstellen
-und mit den Dateipfaden füllen lassen ###
-*/
-
-let imagesArray = [
-    './src/img/galerie-bibliothek/besonderes/particularly001.jpg',
-    './src/img/galerie-bibliothek/besonderes/particularly002.jpg',
-    './src/img/galerie-bibliothek/besonderes/particularly003.jpg',
-    './src/img/galerie-bibliothek/besonderes/particularly004.jpg',
-    './src/img/galerie-bibliothek/besonderes/particularly005.jpg',
-    './src/img/galerie-bibliothek/besonderes/particularly006.jpg',
-    './src/img/galerie-bibliothek/besonderes/particularly007.jpg',
-    './src/img/galerie-bibliothek/besonderes/particularly008.jpg',
-    './src/img/galerie-bibliothek/besonderes/particularly009.jpg',
-];
-
-// Arrays für die Zukünftige Logik
+/**
+ * Ein Bilder-Objekt mit vier Arrays,
+ * welche Dateipfade zu den einzelnen Bildern
+ * der jeweiligen Bildergalerien enthält.
+ */
 
 const bilderObjekt = {
     specialPicArray: [
@@ -121,8 +106,13 @@ const bilderObjekt = {
     ],
 };
 
-// Referenzieren und Erstellen des HTML-Gerüstes
+// Selektieren und halten (Variable) des Galerie-Bereichs
 let checkGalerieSide = document.querySelector('#galerie-bereich');
+
+/**
+ * Die htmlContentCheck-Funktion erhält in einer Anweisung den Galerie-Bereich und prüft diesen auf Existens (true/false),
+ * wenn der Bereich existiert, wird die nächste Funktion aufgerufen.
+ */
 
 function htmlContentCheck() {
     if (checkGalerieSide) {
@@ -130,59 +120,92 @@ function htmlContentCheck() {
     }
 }
 
+/**
+ *Die iteratePicObject-Funktion hält in einer Konstanten die Schlüssel des Objektes (Namen der Arrays).
+ *Mit der For-Of-Schleife wird über die Werte des bilderObjekt`s (Key`s der einzelnen Array`s) iteriert und
+ *in einer Konstanten gehalten, diese Konstante wird an die nächste Funktion als Parameter übergeben.
+ *@param {*enthält den Array-Schlüssel des gerade iterierten Wertes im Objekt}
+ */
+
 function iteratePicObject() {
     const eigenschaften = Object.keys(bilderObjekt);
 
     for (const eigenschaft of eigenschaften) {
-        const arrKey = eigenschaft;
-        procesArrKeyInHtmlCompatContent(arrKey);
+        const objProp = eigenschaft;
+        processArrKeyInHtmlCompatContent(objProp);
     }
 }
 
-function procesArrKeyInHtmlCompatContent(arrId) {
-    // hier nochmal prüfen es scheint etwas mit dem ausgabewert nicht zu stimmen
+/**
+ *Die processArrKeyInHtmlCompatContent-Funktion bekommt über einen Parameter den Array-Schlüssel übergeben.
+ *Erstellt zwei Variablen und definiert diese als String.
+ *Eine else-if-Anweisung prüft nun den Parameter auf Inhalt und
+ *setzt bei übereinstimmung den jeweiligen Wert in die vorher erstellten Variablen ein,
+ *die wiederum an zwei Funktionen mit jeweils zwei Parametern übergeben werden
+ * @param {*enthält den Array-Schlüssel} arrId
+ */
+
+function processArrKeyInHtmlCompatContent(arrId) {
     let imgIdString = '';
+    let headLineContent = '';
 
     if (arrId === 'specialPicArray') {
         imgIdString = 'special-galerie';
+        headLineContent = 'Besondere Fotogalerie';
     } else if (arrId === 'weddingPicArray') {
         imgIdString = 'wedding-galerie';
+        headLineContent = 'Hochzeits Galerie';
     } else if (arrId === 'eventsPicArray') {
         imgIdString = 'event-galerie';
+        headLineContent = 'Event Galerie';
     } else if (arrId === 'shootingPicArray') {
         imgIdString = 'shooting-galerie';
+        headLineContent = 'Fotoshooting Galerie';
     }
 
-    buildHtmlContent(imgIdString);
+    buildHtmlContent(imgIdString, headLineContent);
     insertImages(arrId, imgIdString);
 }
 
-function buildHtmlContent(imgIdString) {
+/**
+ * Diese Funktion erhält über die beiden Untenstehenden Parameter den Wert für die ID
+ * des jeweiligen Galerie-Containers und den Überschriften-Namen der einzelnen Galerien.
+ * Es wird der Bereich für die Bildergalerie im HTML in einer Variable gehalten,
+ * dann werden Div-Container erstellt, jedes davon erhält eine ID und ein Class-Attribut.
+ * Als nächstes wird ein h1-tag für die Überschrift erstellt und
+ * erhält den Parameter headLineContent als Content.
+ * Alle erstellten Elemente werden eingefügt.
+ * @param {*enthält den zuvor ausgewerteten ID-Namen für den Container} imgIdString
+ * @param {*enthält den zuvor ausgewerteten Content für das h1-tag} headLineContent
+ */
+
+function buildHtmlContent(imgIdString, headLineContent) {
     let picArea = document.getElementById('galerie-bereich');
 
     let imgContainer = document.createElement('div');
     imgContainer.setAttribute('id', imgIdString);
-    console.log(imgContainer);
+    imgContainer.classList.add('style-img-container');
+
     let headLine = document.createElement('h1');
-    headLine.textContent = imgIdString;
+    headLine.textContent = headLineContent;
 
     imgContainer.insertAdjacentElement('afterbegin', headLine);
     picArea.appendChild(imgContainer);
-    console.log(picArea);
 }
 
-// Funktion zum einbinden der <a> und <img> -Tags in das HTML Gerüstes
-function insertImages(arrProp, conId) {
-    /**
-     * Wichtig!!! insertImages funktion braucht 2 Parameter 1x für const container und für das imgArray
-     * Die if Anweisung benötigt eine funktione drumherum
-     * Eine Logik für das einfügen der einzelnen Reiter wird auch noch benötigt
-     */
+/**
+ * Funktion Iteriert über die Bilder-Arrays im Bilder-Objekt
+ * und speichert den aktuellen Iterations-Wert in einer Variablen.
+ * Danach wird das HTML Gerüst erstellt und die Iterations-Werte eingetragen und dann ins HTML eingefügt
+ * @param {*enthält den Array-Schlüssel} arrKey
+ * @param {*enthält den zuvor ausgewerteten ID-String für den Container} conId
+ */
 
+function insertImages(arrKey, conId) {
     const container = document.getElementById(conId);
-    console.log(container);
-    for (let i = 0; i < bilderObjekt[arrProp].length; i++) {
-        const imageSrc = bilderObjekt[arrProp][i];
+
+    for (let i = 0; i < bilderObjekt[arrKey].length; i++) {
+        const imageSrc = bilderObjekt[arrKey][i];
 
         const anchorElement = document.createElement('a');
         anchorElement.href = imageSrc;
@@ -191,7 +214,7 @@ function insertImages(arrProp, conId) {
         imageElement.src = imageSrc;
 
         anchorElement.appendChild(imageElement);
-        console.log(container);
+
         container.appendChild(anchorElement);
     }
 }
