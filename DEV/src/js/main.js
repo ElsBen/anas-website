@@ -211,8 +211,10 @@ function insertImages(arrKey, conId) {
         anchorElement.href = imageSrc;
 
         const imageElement = document.createElement('img');
+        imageElement.setAttribute('class', 'clickable-image');
+        imageElement.setAttribute(`id`, `${arrKey + `-` + i}`);
         imageElement.src = imageSrc;
-
+        console.log(imageElement);
         anchorElement.appendChild(imageElement);
 
         container.appendChild(anchorElement);
@@ -220,3 +222,92 @@ function insertImages(arrKey, conId) {
 }
 
 htmlContentCheck();
+
+// Logik Bilder Großansicht
+// Die verschiedenen Logiken (Hintergrundbild-Animation,
+// Galerie-Aufbau und Großansicht) sollten in seperaten Dateien abgelegt werden,
+// um die Übersichtlichkeit zu gewährleisten.
+
+const galleryViewContainer = document.querySelector('.galerie-view-container');
+const closeButton = document.querySelector('.close-button');
+const prevButton = document.querySelector('.prev-button');
+const nextButton = document.querySelector('.next-button');
+
+let currentIndex = 0;
+
+function showImage(arrName, index) {
+    const viewImage = document.querySelector('.image-view-container img');
+    console.log(arrName);
+    viewImage.src = bilderObjekt.arrName[index];
+}
+
+function showGallery(idToArrName) {
+    console.log(idToArrName);
+    galleryViewContainer.style.display = 'block';
+    showImage(idToArrName, currentIndex);
+}
+
+function closeGallery() {
+    galleryViewContainer.style.display = 'none';
+}
+
+if (closeButton) {
+    closeButton.addEventListener('click', closeGallery);
+}
+
+if (prevButton) {
+    prevButton.addEventListener('click', () => {
+        // ImagesArray sollte durch einen Parameter austauschbar werden,
+        // um die einzelnen Galerien selektieren.
+        currentIndex =
+            (currentIndex - 1 + imagesArray.length) % imagesArray.length;
+        showImage(currentIndex);
+    });
+}
+
+if (nextButton) {
+    nextButton.addEventListener('click', () => {
+        // ImagesArray sollte durch einen Parameter austauschbar werden,
+        // um die einzelnen Galerien selektieren.
+        currentIndex = (currentIndex + 1) % imagesArray.length;
+        showImage(currentIndex);
+    });
+}
+
+function iterateOverClickableImages() {
+    const clickableImages = document.querySelectorAll('.clickable-image');
+
+    clickableImages.forEach(function (image) {
+        image.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            clickedImage(e);
+        });
+    });
+}
+
+// Bild ID oder evtl. den Bildpfad abgreifen und für die Galeriefunktion einsetzen
+
+function clickedImage(event) {
+    const imageClicked = event.target;
+    const imageId = imageClicked.id;
+    idToValidArrNameAndIndex(imageId);
+}
+
+function idToValidArrNameAndIndex(galleryImgIdString) {
+    const splitId = galleryImgIdString.split('-');
+
+    // hier nochmal drüber schauen der Code wird in der nächsten funktion nicht als Valide angesehen!!!
+    const evalArrName = eval(splitId[0]);
+    const saveArrName = evalArrName;
+    const saveImgIndex = splitId[1];
+
+    currentIndex = saveImgIndex;
+    console.log(saveArrName);
+    showGallery(saveArrName);
+}
+
+// Warten, bis das DOM vollständig geladen ist
+document.addEventListener('DOMContentLoaded', function () {
+    iterateOverClickableImages();
+});
