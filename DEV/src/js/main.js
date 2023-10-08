@@ -140,7 +140,7 @@ function iteratePicObject() {
  *Die processArrKeyInHtmlCompatContent-Funktion bekommt über einen Parameter den Array-Schlüssel übergeben.
  *Erstellt zwei Variablen und definiert diese als String.
  *Eine else-if-Anweisung prüft nun den Parameter auf Inhalt und
- *setzt bei übereinstimmung den jeweiligen Wert in die vorher erstellten Variablen ein,
+ *setzt bei übereinstimmung den jeweiligen Wert in die vorher erstellte Variable ein,
  *die wiederum an zwei Funktionen mit jeweils zwei Parametern übergeben werden
  * @param {*enthält den Array-Schlüssel} arrId
  */
