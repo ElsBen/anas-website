@@ -234,11 +234,11 @@ const prevButton = document.querySelector('.prev-button');
 const nextButton = document.querySelector('.next-button');
 
 let currentIndex = 0;
+let imgPath;
 
 function showImage(arrName, index) {
     const viewImage = document.querySelector('.image-view-container img');
-    console.log(arrName);
-    viewImage.src = bilderObjekt.arrName[index];
+    viewImage.src = arrName[index];
 }
 
 function showGallery(idToArrName) {
@@ -257,19 +257,18 @@ if (closeButton) {
 
 if (prevButton) {
     prevButton.addEventListener('click', () => {
-        // ImagesArray sollte durch einen Parameter austauschbar werden,
-        // um die einzelnen Galerien selektieren.
-        currentIndex =
-            (currentIndex - 1 + imagesArray.length) % imagesArray.length;
+        currentIndex = (currentIndex - 1 + imgPath.length) % imgPath.length;
         showImage(currentIndex);
     });
 }
 
 if (nextButton) {
     nextButton.addEventListener('click', () => {
-        // ImagesArray sollte durch einen Parameter austauschbar werden,
-        // um die einzelnen Galerien selektieren.
-        currentIndex = (currentIndex + 1) % imagesArray.length;
+        // Das ImageArray wurde entfernt und
+        // einer Variablen (imgPath) das geklickte Bild und alle Bilder in diesem Array übergeben
+        // leider lädt er die Bilder nicht und erhält einen Error
+        console.log(imgPath);
+        currentIndex = (currentIndex + 1) % imgPath.length;
         showImage(currentIndex);
     });
 }
@@ -296,15 +295,23 @@ function clickedImage(event) {
 
 function idToValidArrNameAndIndex(galleryImgIdString) {
     const splitId = galleryImgIdString.split('-');
-
-    // hier nochmal drüber schauen der Code wird in der nächsten funktion nicht als Valide angesehen!!!
-    const evalArrName = eval(splitId[0]);
-    const saveArrName = evalArrName;
-    const saveImgIndex = splitId[1];
-
+    const unvalidArrName = splitId[0];
+    let validArrName;
+    if (unvalidArrName === 'specialPicArray') {
+        validArrName = bilderObjekt.specialPicArray;
+    } else if (unvalidArrName === 'weddingPicArray') {
+        validArrName = bilderObjekt.weddingPicArray;
+    } else if (unvalidArrName === 'eventsPicArray') {
+        validArrName = bilderObjekt.eventsPicArray;
+    } else if (unvalidArrName === 'shootingPicArray') {
+        validArrName = bilderObjekt.shootingPicArray;
+    }
+    imgPath = validArrName;
+    console.log(imgPath);
+    const saveImgIndex = Number(splitId[1]);
     currentIndex = saveImgIndex;
-    console.log(saveArrName);
-    showGallery(saveArrName);
+
+    showGallery(validArrName);
 }
 
 // Warten, bis das DOM vollständig geladen ist
