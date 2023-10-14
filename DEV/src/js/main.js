@@ -214,7 +214,6 @@ function insertImages(arrKey, conId) {
         imageElement.setAttribute('class', 'clickable-image');
         imageElement.setAttribute(`id`, `${arrKey + `-` + i}`);
         imageElement.src = imageSrc;
-        console.log(imageElement);
         anchorElement.appendChild(imageElement);
 
         container.appendChild(anchorElement);
@@ -242,7 +241,6 @@ function showImage(arrName, index) {
 }
 
 function showGallery(idToArrName) {
-    console.log(idToArrName);
     galleryViewContainer.style.display = 'block';
     showImage(idToArrName, currentIndex);
 }
@@ -258,18 +256,14 @@ if (closeButton) {
 if (prevButton) {
     prevButton.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + imgPath.length) % imgPath.length;
-        showImage(currentIndex);
+        showImage(imgPath, currentIndex);
     });
 }
 
 if (nextButton) {
     nextButton.addEventListener('click', () => {
-        // Das ImageArray wurde entfernt und
-        // einer Variablen (imgPath) das geklickte Bild und alle Bilder in diesem Array übergeben
-        // leider lädt er die Bilder nicht und erhält einen Error
-        console.log(imgPath);
         currentIndex = (currentIndex + 1) % imgPath.length;
-        showImage(currentIndex);
+        showImage(imgPath, currentIndex);
     });
 }
 
@@ -285,8 +279,6 @@ function iterateOverClickableImages() {
     });
 }
 
-// Bild ID oder evtl. den Bildpfad abgreifen und für die Galeriefunktion einsetzen
-
 function clickedImage(event) {
     const imageClicked = event.target;
     const imageId = imageClicked.id;
@@ -296,7 +288,9 @@ function clickedImage(event) {
 function idToValidArrNameAndIndex(galleryImgIdString) {
     const splitId = galleryImgIdString.split('-');
     const unvalidArrName = splitId[0];
+
     let validArrName;
+
     if (unvalidArrName === 'specialPicArray') {
         validArrName = bilderObjekt.specialPicArray;
     } else if (unvalidArrName === 'weddingPicArray') {
@@ -307,7 +301,7 @@ function idToValidArrNameAndIndex(galleryImgIdString) {
         validArrName = bilderObjekt.shootingPicArray;
     }
     imgPath = validArrName;
-    console.log(imgPath);
+
     const saveImgIndex = Number(splitId[1]);
     currentIndex = saveImgIndex;
 
