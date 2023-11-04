@@ -176,7 +176,6 @@ body {
 }
 
 #background-image {
-    /* Problem: bei ca 490px Browserbreite hört das Backgroundimage auf runter zu Skalieren */
     background-image: url('../img/logo_transparent.png');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -1037,7 +1036,7 @@ body {
     object-fit: cover;
 }
 
-/* Impression von ChatGPT für die Bildereinzelansicht */
+/* Bildereinzelansicht */
 
 .galerie-view-container {
     display: none;
@@ -1047,8 +1046,19 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    z-index: 999;
+    z-index: 9999;
     overflow: auto;
+}
+
+/* versteckte Scrollbar für Chrome, Safari and Opera */
+.galerie-view-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* versteckte Scrollbar für IE, Edge and Firefox */
+.galerie-view-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .image-view-container {
@@ -1057,8 +1067,10 @@ body {
 }
 
 .image-view-container > img {
-    max-width: 60%;
-    max-height: 60%;
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    margin: 20px;
     border: 2px solid white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
