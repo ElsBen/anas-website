@@ -3,6 +3,7 @@
 
         Hell Grün: #b4ffd8
         Dunkel Grün: #70c6c7
+        Dunkel Grün Auswahl: #006b6b
 
  */
 
@@ -1087,6 +1088,32 @@ button {
 
 #background-image-kontakt {
     background-image: url(../img/briefkasten.jpg);
+}
+
+form > div {
+    margin: 2.5rem 0 0 0;
+}
+
+form > div > label {
+    color: #b4ffd8;
+    text-shadow: 2px 2px 2px #006b6b;
+    margin-left: 25%;
+    font-weight: bold;
+}
+
+form > .first-name {
+    margin-top: 8rem;
+}
+
+form > div > textarea {
+    margin-bottom: 2rem;
+}
+
+form > div > .input-fields {
+    background-color: rgb(112, 198, 199, 0.45);
+    width: 30%;
+    margin-right: 25%;
+    float: right;
 }
 
 /* ### GRID-SYSTEM ### */
