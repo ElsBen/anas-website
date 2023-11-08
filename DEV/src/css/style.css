@@ -1037,8 +1037,6 @@ body {
     object-fit: cover;
 }
 
-/* Impression von ChatGPT für die Bildereinzelansicht */
-
 .galerie-view-container {
     display: none;
     position: fixed;
@@ -1083,6 +1081,12 @@ button {
     cursor: pointer;
     color: white;
     font-size: 24px;
+}
+
+/* ### KONTAKTFORMULAR ### */
+
+#background-image-kontakt {
+    background-image: url(../img/briefkasten.jpg);
 }
 
 /* ### GRID-SYSTEM ### */
