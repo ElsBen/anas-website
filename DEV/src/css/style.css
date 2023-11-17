@@ -1090,6 +1090,10 @@ button {
     background-image: url(../img/briefkasten.jpg);
 }
 
+#transparent-background-image {
+    background-color: rgb(255, 255, 255, 0.4);
+}
+
 form > div {
     margin: 2.5rem 0 0 0;
 }
