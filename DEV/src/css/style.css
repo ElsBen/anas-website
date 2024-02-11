@@ -844,73 +844,6 @@ body {
     }
 }
 
-/* ### FOOTER ### */
-
-#footer-nav {
-    background-color: #b4ffd8;
-}
-
-#footer-nav > #footer-nav-mobile {
-    display: none;
-}
-
-#footer-nav > #footer-nav-desktop > .container > .row > .col-6 a {
-    float: right;
-    margin-left: 1.5rem;
-}
-
-#footer-nav .container > .row > .col-6 a:link {
-    color: #70c6c7;
-    text-decoration: none;
-}
-
-#footer-nav .container > .row > .col-6 a:visited {
-    color: #70c6c7;
-    text-decoration: none;
-}
-
-#footer-nav .container > .row > .col-6 a:active {
-    color: #006b6b;
-    text-decoration: none;
-}
-
-#footer-nav .container > .row > .col-6 a:hover {
-    color: #006b6b;
-    text-decoration: none;
-}
-
-@media (max-width: 636px) {
-    #footer-nav > #footer-nav-desktop {
-        display: none;
-    }
-
-    #footer-nav > #footer-nav-mobile {
-        display: block;
-    }
-
-    #footer-nav .container > .row > .col-6 .mobile-links {
-        text-align: center;
-        margin-bottom: 0.8rem;
-    }
-
-    #footer-nav .container > .row > .col-6 a:first-of-type {
-        float: left;
-    }
-
-    #footer-nav .container > .row > .col-6 a:last-of-type {
-        float: right;
-    }
-
-    #footer-nav .container > .row > .col-6 a:nth-of-type(even) {
-        margin: 0 12% 0 12%;
-    }
-
-    #footer-nav .container > .row > .col-6 span {
-        display: block;
-        font-size: 0.7rem;
-    }
-}
-
 /* ### LEISTUNGS-BOXEN ### */
 
 #leistungsboxen-bereich > .leistungsboxen {
@@ -1127,10 +1060,12 @@ form > .first-name {
 
 form > div > textarea {
     margin-bottom: 2rem;
+    padding-top: 10px;
 }
 
 form > div > .input-fields {
     background-color: rgb(112, 198, 199, 0.45);
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.2);
     width: 30%;
     margin-right: 25%;
     float: right;
@@ -1140,7 +1075,99 @@ form > div > .no-resize {
     resize: none;
 }
 
-form > div > .form-btn {
+form > .form-btn {
+    margin: 0 0 6% 68%;
+    width: auto;
+    height: auto;
+    background-color: rgb(180, 255, 216, 0.1);
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* Diesen Teil unten in die allgemeinen Button stylings einfügen und universel machen */
+
+form > .form-btn:link {
+    color: #70c6c7;
+}
+
+form > .form-btn:visited {
+    color: #70c6c7;
+}
+
+form > .form-btn:active {
+    color: #006b6b;
+}
+
+form > .form-btn:hover {
+    color: #006b6b;
+    border: 2px solid #006b6b;
+}
+
+/* ### FOOTER ### */
+
+#footer-nav {
+    background-color: #b4ffd8;
+    margin-top: 2rem;
+}
+
+#footer-nav > #footer-nav-mobile {
+    display: none;
+}
+
+#footer-nav > #footer-nav-desktop > .container > .row > .col-6 a {
+    float: right;
+    margin-left: 1.5rem;
+}
+
+#footer-nav .container > .row > .col-6 a:link {
+    color: #70c6c7;
+    text-decoration: none;
+}
+
+#footer-nav .container > .row > .col-6 a:visited {
+    color: #70c6c7;
+    text-decoration: none;
+}
+
+#footer-nav .container > .row > .col-6 a:active {
+    color: #006b6b;
+    text-decoration: none;
+}
+
+#footer-nav .container > .row > .col-6 a:hover {
+    color: #006b6b;
+    text-decoration: none;
+}
+
+@media (max-width: 636px) {
+    #footer-nav > #footer-nav-desktop {
+        display: none;
+    }
+
+    #footer-nav > #footer-nav-mobile {
+        display: block;
+    }
+
+    #footer-nav .container > .row > .col-6 .mobile-links {
+        text-align: center;
+        margin-bottom: 0.8rem;
+    }
+
+    #footer-nav .container > .row > .col-6 a:first-of-type {
+        float: left;
+    }
+
+    #footer-nav .container > .row > .col-6 a:last-of-type {
+        float: right;
+    }
+
+    #footer-nav .container > .row > .col-6 a:nth-of-type(even) {
+        margin: 0 12% 0 12%;
+    }
+
+    #footer-nav .container > .row > .col-6 span {
+        display: block;
+        font-size: 0.7rem;
+    }
 }
 
 /* ### GRID-SYSTEM ### */

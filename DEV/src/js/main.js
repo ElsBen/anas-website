@@ -5,46 +5,74 @@
 let backgroundImage = document.getElementById('background-image');
 
 document.addEventListener('wheel', function (e) {
-    if (e.deltaY > 0 && window.screen.width > 1100) {
-        backgroundImage.setAttribute('style', 'background-position: 0 -550px');
-    } else if (e.deltaY < 0 && window.screen.width > 1100) {
-        backgroundImage.setAttribute('style', 'background-position: 0 0');
-    } else if (
-        e.deltaY > 0 &&
-        window.screen.width < 1100 &&
-        window.screen.width > 790
-    ) {
-        backgroundImage.setAttribute('style', 'background-position: 0 -400px');
-    } else if (
-        e.deltaY < 0 &&
-        window.screen.width < 1100 &&
-        window.screen.width > 790
-    ) {
-        backgroundImage.setAttribute('style', 'background-position: 0 0');
-    } else if (
-        e.deltaY > 0 &&
-        window.screen.width < 790 &&
-        window.screen.width > 480
-    ) {
-        backgroundImage.setAttribute('style', 'background-position: 0 -250px');
-    } else if (
-        e.deltaY < 0 &&
-        window.screen.width < 790 &&
-        window.screen.width > 480
-    ) {
-        backgroundImage.setAttribute('style', 'background-position: 0 150px');
-    } else if (e.deltaY > 0 && window.screen.width < 480) {
-        backgroundImage.setAttribute('style', 'background-position: -40px 0');
-        // bei 480px lässt sich das image nicht mehr abhängig von der viewportgröße skalieren
-        // backgroundImage.setAttribute('style', 'width: 70%');
+    if (!backgroundImage) {
+        console.log('Hintergrundbild nicht vorhanden!!!');
+        return;
+    }
 
-        // Beim Seitenwechsel unter 480px kommt es zum seitlichem verrücken des Background-images.
-        // Den letzten Schritt unter 480px überprüfen und ggf.
-        // mittels CSS und "Display: none" Background-image abschalten,
-        // um dann ein anderes angepasstes Background-image einzufügen,
-        // Welches dann mit "display: cover" wieder der Fenstergröße entsprechend angepasst werden kann.
+    const deltaY = e.deltaY;
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth > 1100) {
+        backgroundImage.style.backgroundPosition =
+            deltaY > 0 ? '0 -550px' : '0 0';
+    } else if (screenWidth > 790) {
+        backgroundImage.style.backgroundPosition =
+            deltaY > 0 ? '0 -400px' : '0 0';
+    } else if (screenWidth > 480) {
+        backgroundImage.style.backgroundPosition =
+            deltaY > 0 ? '0 -250px' : '0 150px';
+    } else {
+        // Für Bildschirmbreiten unter 480px, passen Sie die Behandlung nach Bedarf an.
+        // z.B. backgroundImage.style.backgroundPosition = deltaY > 0 ? '-40px 0' : '0 0';
     }
 });
+
+// NACH AUSGIEBIGEN TESTS KANN DER UNTEN STEHENDE CODE GELÖSCHT WERDEN!!!!!
+
+// document.addEventListener('wheel', function (e) {
+//     if (e.deltaY > 0 && window.screen.width > 1100) {
+//         backgroundImage.setAttribute('style', 'background-position: 0 -550px');
+//     } else if (e.deltaY < 0 && window.screen.width > 1100) {
+//         backgroundImage.setAttribute('style', 'background-position: 0 0');
+//     } else if (
+//         e.deltaY > 0 &&
+//         window.screen.width < 1100 &&
+//         window.screen.width > 790
+//     ) {
+//         backgroundImage.setAttribute('style', 'background-position: 0 -400px');
+//     } else if (
+//         e.deltaY < 0 &&
+//         window.screen.width < 1100 &&
+//         window.screen.width > 790
+//     ) {
+//         backgroundImage.setAttribute('style', 'background-position: 0 0');
+//     } else if (
+//         e.deltaY > 0 &&
+//         window.screen.width < 790 &&
+//         window.screen.width > 480
+//     ) {
+//         backgroundImage.setAttribute('style', 'background-position: 0 -250px');
+//     } else if (
+//         e.deltaY < 0 &&
+//         window.screen.width < 790 &&
+//         window.screen.width > 480
+//     ) {
+//         backgroundImage.setAttribute('style', 'background-position: 0 150px');
+//     } else if (e.deltaY > 0 && window.screen.width < 480) {
+//         backgroundImage.setAttribute('style', 'background-position: -40px 0');
+//         // bei 480px lässt sich das image nicht mehr abhängig von der viewportgröße skalieren
+//         // backgroundImage.setAttribute('style', 'width: 70%');
+
+//         // Beim Seitenwechsel unter 480px kommt es zum seitlichem verrücken des Background-images.
+//         // Den letzten Schritt unter 480px überprüfen und ggf.
+//         // mittels CSS und "Display: none" Background-image abschalten,
+//         // um dann ein anderes angepasstes Background-image einzufügen,
+//         // Welches dann mit "display: cover" wieder der Fenstergröße entsprechend angepasst werden kann.
+//     } else if (backgroundImage === undefined || null) {
+//         console.log('Hintergrundbild nicht vorhanden!!!');
+//     }
+// });
 
 document.addEventListener('touchstart', function () {}, true);
 
@@ -396,12 +424,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Logik für das validieren und erstellen der Formulardaten
 
-class formElement {
-    name = '';
-    lastName = '';
-    eMail = '';
-    phone = 0;
-    message = '';
-}
+const form = document.querySelector('#form');
 
-console.log(formDates);
+const userEntries = [];
+
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formName = document.querySelector('#name').value;
+        const formLastName = document.querySelector('#last-name').value;
+        const formEMail = document.querySelector('#email').value;
+        const formTelNumber = document.querySelector('#tele-number').value;
+        const formMessage = document.querySelector('#message').value;
+
+        const saveEntries = {
+            name: formName,
+            lastName: formLastName,
+            email: formEMail,
+            telephone: formTelNumber,
+            message: formMessage,
+        };
+
+        userEntries.push(saveEntries);
+        form.reset();
+    });
+
+    setInterval(() => {
+        console.log(userEntries);
+    }, 10000);
+}
