@@ -618,6 +618,8 @@ body {
     margin-bottom: 3rem;
 }
 
+/* Evtl. diesen Bereich in den allgemeinen Buttonbereich schieben und den Klassennamen universel anpassen */
+
 .leistung-ansehen-btn {
     text-decoration: none;
     height: 40px;
@@ -1132,6 +1134,13 @@ form > div > .input-fields {
     width: 30%;
     margin-right: 25%;
     float: right;
+}
+
+form > div > .no-resize {
+    resize: none;
+}
+
+form > div > .form-btn {
 }
 
 /* ### GRID-SYSTEM ### */

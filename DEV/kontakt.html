@@ -107,6 +107,7 @@
                     </div>
                 </div>
             </nav>
+
             <!-- EINGABEFORMULAR -->
 
             <form action="ziel-des-formulars" method="post">
@@ -116,7 +117,7 @@
                 </div>
 
                 <div class="col-6 last-name">
-                    <label for="rename" required>Nachname:</label>
+                    <label for="last-name" required>Nachname:</label>
                     <input class="input-fields" type="text" id="last-name" />
                 </div>
 
@@ -133,16 +134,18 @@
                 <div class="col-6 message-label">
                     <label for="message" required>Nachricht:</label>
                     <textarea
-                        class="input-fields"
+                        class="input-fields no-resize"
                         name="message"
                         id="message"
                         cols="30"
-                        rows="10"
+                        rows="6"
                     >
                     </textarea>
                 </div>
 
-                <input class="button" type="submit" value="Absenden" />
+                <button class="button btn-typ-1 form-btn" type="submit">
+                    Absenden
+                </button>
             </form>
             <!-- FOOTER -->
 

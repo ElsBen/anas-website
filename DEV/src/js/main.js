@@ -393,3 +393,15 @@ function idToValidArrNameAndIndex(galleryImgIdString) {
 document.addEventListener('DOMContentLoaded', function () {
     iterateOverClickableImages();
 });
+
+// Logik für das validieren und erstellen der Formulardaten
+
+class formElement {
+    name = '';
+    lastName = '';
+    eMail = '';
+    phone = 0;
+    message = '';
+}
+
+console.log(formDates);
