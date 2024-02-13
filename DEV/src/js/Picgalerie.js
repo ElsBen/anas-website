@@ -1,5 +1,3 @@
-// import Galerieview from './Galerieview';
-
 export default class Picturegalerie {
     constructor() {
         /**
@@ -59,10 +57,6 @@ export default class Picturegalerie {
 
         // Selektieren und halten (Variable) des Galerie-Bereichs
         this.checkGalerieSide = document.querySelector('#galerie-bereich');
-
-        // Galerie großansicht Aufruf HIER EVTL. NOCH PARAMETER HINZUFÜGEN
-        // this.galerieView = new Galerieview();
-        // this.galerieView.start();
     }
 
     /**

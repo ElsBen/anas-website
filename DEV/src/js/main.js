@@ -2,6 +2,7 @@
 
 import Scrollanimation from './Scrollbackground.js';
 import Picturegalerie from './Picgalerie.js';
+import Galerieview from './Galerieview.js';
 
 // Logik für die Backgroundimage Scrollanimation
 document.addEventListener('wheel', function (e) {
@@ -19,9 +20,11 @@ document.addEventListener('touchstart', function () {}, true);
  * erst dann wird die erste Funktion gestartet.
  */
 document.addEventListener('DOMContentLoaded', function () {
-    // iterateOverClickableImages(); Hier wäre logik für die Bildergroßansicht nötig!!!
     const loadGalerie = new Picturegalerie();
     loadGalerie.htmlContentCheck();
+
+    const galerieViewStart = new Galerieview();
+    galerieViewStart.iterateOverClickableImages();
 });
 
 // Logik für das validieren und erstellen der Formulardaten
