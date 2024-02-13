@@ -74,6 +74,7 @@ document.addEventListener('wheel', function (e) {
 //     }
 // });
 
+// Einige Geräte brauchen den unten stehenden Code, damit auf die touch-Befehle reagiert werden kann.
 document.addEventListener('touchstart', function () {}, true);
 
 // BILDERGALERIE
