@@ -16,6 +16,7 @@ export default class Galerieview {
         this.closeButton = document.querySelector('.close-button');
         this.prevButton = document.querySelector('.prev-button');
         this.nextButton = document.querySelector('.next-button');
+        this.closePrevNextGallery();
 
         /**
          * currentIndex bekommt den wert im Array als Zähler für die Bildervorschau,
@@ -34,9 +35,10 @@ export default class Galerieview {
     showImage(arrName, index) {
         // let dontScrollBackground = document.getElementById('galerie-bereich');
         // dontScrollBackground.style.position = 'fixed';
+        console.log(arrName, index);
         const viewImage = document.querySelector('.image-view-container img');
         viewImage.src = arrName[index];
-        this.listenClickedBtn();
+        // this.closePrevNextGallery();
     }
 
     /**
@@ -55,52 +57,69 @@ export default class Galerieview {
      * Diese Funktion sorgt dafür das sich dass Galleriefenster beim klicken des X-Buttons schließt,
      * indem es mit style.display auf den CSS-Wert diplay zugreift und ihn auf none setzt.
      */
-    closeGallery() {
-        this.galleryViewContainer.style.display = 'none';
-    }
+    closePrevNextGallery() {
+        if (this.closeButton && this.prevButton && this.nextButton) {
+            // AUSGIEBIG PRÜFEN UND LÖSCHEN WENN KEINE BUGS MEHR BESTEHEN!!!
+            // this.closeButton.removeEventListener('click', () => {
+            //     console.log('closeBtn');
+            //     console.log(this.galleryViewContainer.style);
+            //     this.galleryViewContainer.style.display = 'none';
+            // });
+            // this.prevButton.removeEventListener('click', () => {
+            //     console.log('prevBtn');
+            //     this.currentIndex =
+            //         (this.currentIndex - 1 + this.imgPath.length) %
+            //         this.imgPath.length;
+            //     this.showImage(this.imgPath, this.currentIndex);
+            // });
+            // this.nextButton.removeEventListener('click', () => {
+            //     console.log('nextBtn');
+            //     this.currentIndex =
+            //         (this.currentIndex + 1) % this.imgPath.length;
+            //     this.showImage(this.imgPath, this.currentIndex);
+            // });
 
-    listenClickedBtn() {
-        /**
-         * Die Anweisung sorgt dafür das ein Klickevent ausgelöst wird sobald der X-Button geklickt wird,
-         * welches dann die Funktion closeGallery aufruft.
-         */
-        if (this.closeButton) {
-            this.closeButton.addEventListener('click', this.closeGallery());
-        }
+            /**
+             * Die Anweisung sorgt dafür das ein Klickevent ausgelöst wird sobald der X-Button geklickt wird,
+             * welches dann die Funktion closeGallery aufruft.
+             */
+            this.closeButton.addEventListener('click', () => {
+                console.log(this.galleryViewContainer.style);
+                this.galleryViewContainer.style.display = 'none';
+            });
 
-        /**
-         * Die Anweisung sorgt dafür das beim klicken des Vorwärtsbuttons,
-         * ein event gestartet wird welches mittels einer Rechenoperation
-         * den Index des nächsten Bildes im ausgewählten Array ermittelt.
-         * Danach wird die nächste Funktion showImage
-         * welche zwei Parameter enrhält aufgerufen.
-         * @param {*enthält den neu errechenten Index im ausgewählten Array} currentIndex
-         * @param {*enthält die Variable in dem das ausgewählte Array geschrieben wurde} imgPath
-         */
-        if (this.prevButton) {
+            /**
+             * Die Anweisung sorgt dafür das beim klicken des Vorwärtsbuttons,
+             * ein event gestartet wird welches mittels einer Rechenoperation
+             * den Index des nächsten Bildes im ausgewählten Array ermittelt.
+             * Danach wird die nächste Funktion showImage
+             * welche zwei Parameter enrhält aufgerufen.
+             * @param {*enthält den neu errechenten Index im ausgewählten Array} currentIndex
+             * @param {*enthält die Variable in dem das ausgewählte Array geschrieben wurde} imgPath
+             */
             this.prevButton.addEventListener('click', () => {
                 this.currentIndex =
                     (this.currentIndex - 1 + this.imgPath.length) %
                     this.imgPath.length;
                 this.showImage(this.imgPath, this.currentIndex);
             });
-        }
 
-        /**
-         * Die Anweisung sorgt dafür das beim klicken des Rückwärtsbuttons,
-         * ein event gestartet wird welches mittels einer Rechenoperation
-         * den Index des nächsten Bildes im ausgewählten Array ermittelt.
-         * Danach wird die nächste Funktion showImage
-         * welche zwei Parameter enrhält aufgerufen.
-         * @param {*enthält den neu errechenten Index im ausgewählten Array} currentIndex
-         * @param {*enthält die Variable in dem das ausgewählte Array geschrieben wurde} imgPath
-         */
-        if (this.nextButton) {
+            /**
+             * Die Anweisung sorgt dafür das beim klicken des Rückwärtsbuttons,
+             * ein event gestartet wird welches mittels einer Rechenoperation
+             * den Index des nächsten Bildes im ausgewählten Array ermittelt.
+             * Danach wird die nächste Funktion showImage
+             * welche zwei Parameter enrhält aufgerufen.
+             * @param {*enthält den neu errechenten Index im ausgewählten Array} currentIndex
+             * @param {*enthält die Variable in dem das ausgewählte Array geschrieben wurde} imgPath
+             */
             this.nextButton.addEventListener('click', () => {
                 this.currentIndex =
                     (this.currentIndex + 1) % this.imgPath.length;
                 this.showImage(this.imgPath, this.currentIndex);
             });
+        } else {
+            console.log('Eines der Button Elemente fehlt!');
         }
     }
 
@@ -173,7 +192,7 @@ export default class Galerieview {
         console.log(validArrName);
         const saveImgIndex = Number(splitId[1]);
         this.currentIndex = saveImgIndex;
-
+        console.log(this.currentIndex);
         this.showGallery(validArrName);
     }
 }

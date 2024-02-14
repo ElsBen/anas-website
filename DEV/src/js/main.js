@@ -4,6 +4,8 @@ import Scrollanimation from './Scrollbackground.js';
 import Picturegalerie from './Picgalerie.js';
 import Galerieview from './Galerieview.js';
 
+const galerieViewStart = new Galerieview();
+
 // Logik für die Backgroundimage Scrollanimation
 document.addEventListener('wheel', function (e) {
     const backgroundAnimation = new Scrollanimation();
@@ -23,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const loadGalerie = new Picturegalerie();
     loadGalerie.htmlContentCheck();
 
-    const galerieViewStart = new Galerieview();
     galerieViewStart.iterateOverClickableImages();
 });
 
