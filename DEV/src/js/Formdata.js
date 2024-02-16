@@ -2,9 +2,14 @@ export default class Formdata {
     constructor() {
         this.form = document.querySelector('#form');
         this.userEntries = [];
+        this.savedInquiry = JSON.parse(localStorage.getItem('saveInquiry'));
     }
 
     start() {
+        if (this.savedInquiry && this.savedInquiry.length > 0) {
+            this.userEntries = this.savedInquiry;
+        }
+
         if (this.form) {
             this.form.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -26,11 +31,24 @@ export default class Formdata {
 
                 this.userEntries.push(saveEntries);
                 this.form.reset();
+                this.saveUserEntries(saveEntries, this.savedInquiry);
             });
         }
+
         //Wird am Schluss nicht mehr benötigt
         setInterval(() => {
             console.log(this.userEntries);
         }, 10000);
     }
+
+    saveUserEntries(entries, inquiry) {
+        localStorage.setItem('saveInquiry', JSON.stringify(entries));
+
+        this.userEntries = [];
+        this.userEntries.push(inquiry);
+
+        // localStorage.removeItem('saveInquiry');
+    }
 }
+// Hier sollte noch ein Feedback implementiert werden, welches bei Erfolgreichen absenden des Formulares
+// dem Nutzer anzeigt das die Anfrage erfolgreich abgesendet wurde.
