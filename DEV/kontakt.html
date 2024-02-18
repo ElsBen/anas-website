@@ -11,177 +11,194 @@
     </head>
 
     <body id="background-image-kontakt">
-        <div id="transparent-background-image">
-            <!-- NAVIGATIONSLEISTE -->
+        <!-- NAVIGATIONSLEISTE -->
 
-            <nav id="header-nav">
-                <!-- DESKTOP-NAVIGATION -->
+        <nav id="header-nav">
+            <!-- DESKTOP-NAVIGATION -->
 
-                <div class="container" id="desktop-nav">
-                    <div class="navigationsleiste">
-                        <div class="row">
-                            <div class="col-6">
-                                <ul>
-                                    <li><a href="./index.html">Home</a></li>
-                                    <li>
-                                        <a href="./leistung.html">Leistung</a>
-                                    </li>
-                                    <li>
-                                        <a href="./galerie.html">Galerie</a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="./kontakt.html">Kontakt</a>
-                                    </li>
-                                    <li>
-                                        <a href="./impressum.html">Impressum</a>
-                                    </li>
-                                </ul>
+            <div class="container" id="desktop-nav">
+                <div class="navigationsleiste">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>
+                                <li>
+                                    <a href="./leistung.html">Leistung</a>
+                                </li>
+                                <li>
+                                    <a href="./galerie.html">Galerie</a>
+                                </li>
+                                <li class="active">
+                                    <a href="./kontakt.html">Kontakt</a>
+                                </li>
+                                <li>
+                                    <a href="./impressum.html">Impressum</a>
+                                </li>
+                            </ul>
 
-                                <a href="index.html" class="logo-link">
-                                    <img
-                                        src="./src/img/header-banner.png"
-                                        alt="Das Logo von Ana's Fotoeck"
-                                    />
-                                </a>
-                            </div>
+                            <a href="index.html" class="logo-link">
+                                <img
+                                    src="./src/img/header-banner.png"
+                                    alt="Das Logo von Ana's Fotoeck"
+                                />
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- MOBILE-NAVIGATION -->
+            <!-- MOBILE-NAVIGATION -->
 
-                <div class="container" id="mobile-nav">
-                    <div class="navigationsleiste">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="clearfix" id="mobile-nav-dropdown">
-                                    <div id="mobile-nav-button">
-                                        <span>&equiv;</span>
-                                    </div>
-
-                                    <div
-                                        class="clearfix"
-                                        id="mobile-nav-content"
-                                    >
-                                        <ul>
-                                            <li>
-                                                <a href="./index.html">Home</a>
-                                            </li>
-                                            <li>
-                                                <a href="./leistung.html"
-                                                    >Leistung</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a href="./galerie.html"
-                                                    >Galerie</a
-                                                >
-                                            </li>
-                                            <li class="active">
-                                                <a href="./kontakt.html"
-                                                    >Kontakt</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a href="./impressum.html"
-                                                    >Impressum</a
-                                                >
-                                            </li>
-                                        </ul>
-                                    </div>
+            <div class="container" id="mobile-nav">
+                <div class="navigationsleiste">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="clearfix" id="mobile-nav-dropdown">
+                                <div id="mobile-nav-button">
+                                    <span>&equiv;</span>
                                 </div>
-                                <a href="index.html" class="logo-link">
-                                    <img
-                                        src="./src/img/header-banner.png"
-                                        alt="Das Logo von Ana's Fotoeck"
-                                    />
-                                </a>
-                                <a href="index.html" class="logo-link-mobile">
-                                    <img
-                                        src="./src/img/header-banner-mobile.png"
-                                        alt="Das Logo von Ana's Fotoeck"
-                                    />
-                                </a>
+
+                                <div class="clearfix" id="mobile-nav-content">
+                                    <ul>
+                                        <li>
+                                            <a href="./index.html">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="./leistung.html"
+                                                >Leistung</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a href="./galerie.html">Galerie</a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="./kontakt.html">Kontakt</a>
+                                        </li>
+                                        <li>
+                                            <a href="./impressum.html"
+                                                >Impressum</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+                            <a href="index.html" class="logo-link">
+                                <img
+                                    src="./src/img/header-banner.png"
+                                    alt="Das Logo von Ana's Fotoeck"
+                                />
+                            </a>
+                            <a href="index.html" class="logo-link-mobile">
+                                <img
+                                    src="./src/img/header-banner-mobile.png"
+                                    alt="Das Logo von Ana's Fotoeck"
+                                />
+                            </a>
                         </div>
                     </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-            <!-- EINGABEFORMULAR -->
-
+        <!-- EINGABEFORMULAR -->
+        <div id="transparent-background-image">
             <form action="ziel-des-formulars" method="post" id="form">
                 <div class="col-6 first-name">
-                    <label for="name" required>Name:</label>
-                    <input class="input-fields" type="text" id="name" />
+                    <label for="name">Name:</label>
+                    <input
+                        class="input-fields"
+                        type="text"
+                        id="name"
+                        minlength="3"
+                        maxlength="30"
+                        placeholder="Gib hier deinen Vornamen ein..."
+                        required
+                    />
                 </div>
 
                 <div class="col-6 last-name">
-                    <label for="last-name" required>Nachname:</label>
-                    <input class="input-fields" type="text" id="last-name" />
+                    <label for="last-name">Nachname:</label>
+                    <input
+                        class="input-fields"
+                        type="text"
+                        id="last-name"
+                        minlength="3"
+                        maxlength="30"
+                        placeholder="Hier deinen Nachnamen..."
+                        required
+                    />
                 </div>
 
                 <div class="col-6 e-mail">
-                    <label for="email" required>E-Mail:</label>
-                    <input class="input-fields" type="text" id="email" />
+                    <label for="email">E-Mail:</label>
+                    <input
+                        class="input-fields"
+                        type="text"
+                        id="email"
+                        placeholder="Und jetzt noch deine Email Adresse für Rückragen..."
+                        required
+                    />
                 </div>
 
                 <div class="col-6 phone-number">
-                    <label for="tele-number">*Telefonnummer:</label>
-                    <input class="input-fields" type="text" id="tele-number" />
+                    <label for="tele-number" required>*Telefonnummer:</label>
+                    <input
+                        class="input-fields"
+                        type="text"
+                        id="tele-number"
+                        placeholder="Gib deine Telefonnummer an wenn du magst..."
+                    />
                 </div>
 
                 <div class="col-6 message-label">
-                    <label for="message" required>Nachricht:</label>
+                    <label for="message">Nachricht:</label>
                     <textarea
                         class="input-fields no-resize"
                         name="message"
                         id="message"
                         cols="30"
                         rows="6"
+                        minlength="30"
+                        maxlength="300"
+                        placeholder="Hier kannst du uns kurz dein Anliegen schildern..."
+                        required
                     ></textarea>
                 </div>
                 <button class="btn-typ-1 form-btn" type="submit">
-                    Absenden
+                    Jetzt nur noch Absenden!
                 </button>
             </form>
-            <!-- FOOTER -->
+        </div>
+        <!-- FOOTER -->
 
-            <footer id="footer-nav">
-                <div id="footer-nav-desktop">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-6">
-                                <span
-                                    >ANA's Fotoeck By Benjamin Elsner
-                                    (2023)</span
-                                >
+        <footer id="footer-nav">
+            <div id="footer-nav-desktop">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <span>ANA's Fotoeck By Benjamin Elsner (2023)</span>
+                            <a href="./impressum.html">Impressum</a>
+                            <a href="galerie.html">Galerie</a>
+                            <a href="./kontakt.html">Kontakt</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-nav-mobile">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mobile-links">
                                 <a href="./impressum.html">Impressum</a>
                                 <a href="galerie.html">Galerie</a>
                                 <a href="./kontakt.html">Kontakt</a>
                             </div>
+                            <span>ANA's Fotoeck By Benjamin Elsner (2023)</span>
                         </div>
                     </div>
                 </div>
-                <div id="footer-nav-mobile">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="mobile-links">
-                                    <a href="./impressum.html">Impressum</a>
-                                    <a href="galerie.html">Galerie</a>
-                                    <a href="./kontakt.html">Kontakt</a>
-                                </div>
-                                <span
-                                    >ANA's Fotoeck By Benjamin Elsner
-                                    (2023)</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
 
         <script type="module" src="./src/js/main.js" defer></script>
     </body>
