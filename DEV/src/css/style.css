@@ -972,6 +972,18 @@ body {
     object-fit: cover;
 }
 
+@media (max-width: 1124px) {
+    #galerie-bereich a > img {
+        width: 49.5%;
+    }
+}
+
+@media (max-width: 700px) {
+    #galerie-bereich a > img {
+        width: 98.9%;
+    }
+}
+
 /* Bildereinzelansicht */
 
 .galerie-view-container {
