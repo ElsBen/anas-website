@@ -315,7 +315,6 @@ body {
 
 #mobile-nav-button > span {
     position: absolute;
-    /* height: 38px; Problem bei der positionierung Mobile version ist nicht richtig positioniert!!!*/
     bottom: -2px;
     left: 7px;
 }
@@ -433,7 +432,7 @@ body {
 .about-me-container .col-2 > .pic-of-me {
     width: 100%;
     height: 100%;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0.3rem 0.5rem;
     object-fit: cover;
     object-position: 0 0;
 }
@@ -773,8 +772,7 @@ body {
     height: 270px;
     object-fit: cover;
     margin-top: 1.4rem;
-    margin-left: 0.5rem;
-    margin-right: 0.4rem;
+    margin-left: 2.5%;
 }
 
 @media (max-width: 1215px) {
@@ -813,7 +811,7 @@ body {
     }
 
     #galerie-uebersicht-bereich > .row > .col-3 > figure > a > img {
-        margin-left: 3%;
+        margin-left: 2.5%;
         height: 350px;
     }
 }
@@ -1200,20 +1198,15 @@ form > .form-btn:hover {
     }
 
     #footer-nav .container > .row > .col-6 .mobile-links {
-        text-align: center;
         margin-bottom: 0.8rem;
     }
 
-    #footer-nav .container > .row > .col-6 a:first-of-type {
-        float: left;
-    }
-
-    #footer-nav .container > .row > .col-6 a:last-of-type {
+    #footer-nav .container > .row > .col-6 a {
         float: right;
     }
 
     #footer-nav .container > .row > .col-6 a:nth-of-type(even) {
-        margin: 0 12% 0 12%;
+        margin: 0 3% 0 3%;
     }
 
     #footer-nav .container > .row > .col-6 span {
