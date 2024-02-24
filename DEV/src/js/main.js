@@ -4,6 +4,7 @@ import Scrollanimation from './Scrollbackground.js';
 import Picturegalerie from './Picgalerie.js';
 import Galerieview from './Galerieview.js';
 import Formdata from './Formdata.js';
+import PerformanceSideData from './PerformanceSideData.js';
 
 // Logik für die Backgroundimage Scrollanimation
 
@@ -33,3 +34,8 @@ formdataStart.start();
 
 // Einige Geräte brauchen den unten stehenden Code, damit auf die touch-Befehle reagiert werden kann.
 document.addEventListener('touchstart', function () {}, true);
+
+// LEISTUNGSSEITE
+
+const performanceSide = new PerformanceSideData();
+performanceSide.checkInfo();
