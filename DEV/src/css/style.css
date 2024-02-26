@@ -302,6 +302,7 @@ body {
     border: 2px solid #70c6c7;
     width: 37px;
     height: 37px;
+    cursor: pointer;
     position: relative;
     margin-top: 0.6rem;
     margin-bottom: 0.8rem;

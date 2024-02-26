@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
 const formdataStart = new Formdata();
 formdataStart.start();
 
-// Einige Geräte brauchen den unten stehenden Code, damit auf die touch-Befehle reagiert werden kann.
-document.addEventListener('touchstart', function () {}, true);
-
 // LEISTUNGSSEITE
 
 const performanceSide = new PerformanceSideData();
 performanceSide.checkInfo();
+
+// Einige Geräte brauchen den unten stehenden Code, damit auf die touch-Befehle reagiert werden kann.
+document.addEventListener('touchstart', function () {}, true);

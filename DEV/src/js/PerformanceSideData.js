@@ -4,28 +4,73 @@ export default class PerformanceSideData {
         this.performanceBtn = document.getElementsByClassName(
             'leistungsbox-btn-auswaehlen',
         );
+        this.userSelections = [];
+        this.selection = '';
     }
 
-    // Hier evtl. die onclick-Methode für den Button verwenden
-
     checkInfo() {
-        console.log(this.formData);
-        console.log(this.formData[0].checked);
-        console.log(this.formData[0].value);
         Array.from(this.performanceBtn).forEach((button) => {
             button.addEventListener('click', (b) => {
-                b.preventDefault();
+                // schauen ob die Daten ohne den Teil übermittelt werden können!
+                // b.preventDefault();
                 this.formData.forEach((inp) => {
                     let checkedValue = inp.checked;
                     if (checkedValue) {
-                        console.log('Hat geklappt');
-                        console.log(inp.id);
-                        // Hier eine Logik zum speichern und oder absenden des checked-Wertes einfügen
+                        this.validateUserSelection(inp.id);
                     } else {
-                        console.log('Hat nicht geklappt');
+                        console.log('checkbox unchecked!');
                     }
                 });
             });
         });
+    }
+
+    validateUserSelection(selectionId) {
+        switch (selectionId) {
+            case 'basic-shooting':
+                console.log('Basic Shooting');
+                this.selection = 'Basic Shooting';
+                break;
+            case 'basic-event':
+                console.log('Basic Event');
+                this.selection = 'Basic Event';
+                break;
+            case 'basic-particularly':
+                console.log('Basic Besondere Anlässe');
+                this.selection = 'Basic Besondere Anlässe';
+                break;
+            case 'premium-shooting':
+                console.log('Premium Shooting');
+                this.selection = 'Premium Shooting';
+                break;
+            case 'premium-event':
+                console.log('Premium Event');
+                this.selection = 'Premium Event';
+                break;
+            case 'premium-particularly':
+                console.log('Premium Besondere Anlässe');
+                this.selection = 'Premium Besondere Anlässe';
+                break;
+            case 'exclusive-shooting':
+                console.log('Exklusiv Shooting');
+                this.selection = 'Exklusiv Shooting';
+                break;
+            case 'exclusive-event':
+                console.log('Exklusiv Event');
+                this.selection = 'Exklusiv Event';
+                break;
+            case 'exclusive-particularly':
+                console.log('Exklusiv Besondere Anlässe');
+                this.selection = 'Exklusiv Besondere Anlässe';
+                break;
+            default:
+                console.log('no accordance with checkbox ID!!!');
+        }
+
+        this.saveSelection();
+    }
+
+    saveSelection() {
+        this.userSelections.push(this.selection);
     }
 }

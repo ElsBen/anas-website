@@ -1,8 +1,12 @@
+import PerformanceSideData from './PerformanceSideData.js';
+
 export default class Formdata {
     constructor() {
         this.form = document.querySelector('#form');
         this.userEntries = [];
         this.savedInquiry = JSON.parse(localStorage.getItem('saveInquiry'));
+        this.performanceSideSelections = PerformanceSideData;
+        console.log(this.performanceSideSelections);
     }
 
     start() {
@@ -28,6 +32,9 @@ export default class Formdata {
                     telephone: formTelNumber,
                     message: formMessage,
                 };
+
+                // Hier die Logik für den Abruf selektierter Pakete Implementieren!
+                console.log(this.performanceSideSelections);
 
                 this.userEntries.push(saveEntries);
                 this.form.reset();

@@ -178,6 +178,7 @@ export default class Galerieview {
         let validArrName;
         console.log(unvalidArrName);
 
+        // auf switch case umstellen!!!
         if (unvalidArrName === 'specialPicArray') {
             validArrName = this.pictureArrays.bilderObjekt.specialPicArray;
         } else if (unvalidArrName === 'weddingPicArray') {
