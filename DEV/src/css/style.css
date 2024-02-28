@@ -1162,7 +1162,7 @@ form > div > .no-resize {
     resize: none;
 }
 
-form > .form-btn {
+.form-btn {
     width: auto;
     height: auto;
     font-size: 1.2rem;
@@ -1180,23 +1180,40 @@ form > .form-btn {
 
 /* Diesen Teil unten in die allgemeinen Button stylings einfügen und universel machen */
 
-form > .form-btn:link {
+.form-btn:link {
     color: #70c6c7;
 }
 
-form > .form-btn:visited {
+.form-btn:visited {
     color: #70c6c7;
 }
 
-form > .form-btn:active {
+.form-btn:active {
     color: #006b6b;
 }
 
-form > .form-btn:hover {
+.form-btn:hover {
     color: rgb(0, 107, 107, 0.7);
     background-color: #b4ffd8a6;
     border-radius: 1rem 1rem 1rem 1rem;
     border: 2px solid rgb(0, 107, 107, 0.7);
+}
+
+/* DIE BESTÄTIGUNG FÜR DAS ABGESENDETE FORMULAR */
+
+.sended-successfull-container {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sended-successfull {
+    width: 30%;
+    height: max-content;
+    background-color: rgb(112, 198, 199, 0.5);
 }
 
 /* ### FOOTER ### */
