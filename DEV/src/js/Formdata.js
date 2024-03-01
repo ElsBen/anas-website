@@ -7,6 +7,12 @@ export default class Formdata {
         this.savedInquiry = JSON.parse(localStorage.getItem('saveInquiry'));
         this.performanceSideSelections = PerformanceSideData;
         console.log(this.performanceSideSelections);
+        this.successfullSend = document.querySelector(
+            '.sended-successfull-container',
+        );
+        this.successfullSendBtn = document.querySelector(
+            '.successfull-send-btn',
+        );
     }
 
     start() {
@@ -36,9 +42,7 @@ export default class Formdata {
                 // Hier die Logik für den Abruf selektierter Pakete Implementieren!
                 console.log(this.performanceSideSelections);
 
-                this.userEntries.push(saveEntries);
-                this.form.reset();
-                this.saveUserEntries(saveEntries, this.savedInquiry);
+                this.checkEntriesValid();
             });
         }
 
@@ -48,14 +52,36 @@ export default class Formdata {
         }, 10000);
     }
 
+    checkEntriesValid() {
+        // this.validEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        // if (this.start.saveEntries.email = ){}
+        // console.log(this.start.saveEntries.email);
+        this.userEntries.push(this.start.saveEntries);
+        this.form.reset();
+        this.saveUserEntries(this.start.saveEntries, this.savedInquiry);
+    }
+
     saveUserEntries(entries, inquiry) {
         localStorage.setItem('saveInquiry', JSON.stringify(entries));
 
         this.userEntries = [];
         this.userEntries.push(inquiry);
-
+        this.openSuccessfullSendWindow();
         // localStorage.removeItem('saveInquiry');
     }
+
+    openSuccessfullSendWindow() {
+        this.successfullSend.style.display = 'flex';
+        this.closeSuccessfullSendWindow();
+    }
+
+    closeSuccessfullSendWindow() {
+        this.successfullSendBtn.addEventListener('click', () => {
+            this.successfullSend.style.display = 'none';
+        });
+    }
 }
-// Hier sollte noch ein Feedback implementiert werden, welches bei Erfolgreichen absenden des Formulares
-// dem Nutzer anzeigt das die Anfrage erfolgreich abgesendet wurde.
+// Probleme beim Localstorage Wenn dieser anscheinend voll ist,
+// sorgt das dafür das im Browser eine Fehlermeldung entsteht und
+// die Webseite nicht meht ordnungsgemäß funktioniert!!!!
