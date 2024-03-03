@@ -17,6 +17,16 @@ export default class Formdata {
             '.sended-user-input-container',
         );
 
+        this.userInputSendContent =
+            document.querySelector('.sended-user-input');
+
+        this.headlineInputSend = this.userInputSendContent.querySelector('h2');
+
+        this.paragraphInputSend = this.userInputSendContent.querySelector('p');
+
+        this.colorAlert = '#ff7f50';
+        this.colorSuccess = '#b4ffd8';
+
         this.userInputSendBtn = document.querySelector(
             '.user-input-sended-btn',
         );
@@ -78,10 +88,21 @@ export default class Formdata {
     }
 
     buildSuccessfulSendWindowContent() {
+        this.headlineInputSend.textContent = 'Erfolgreich abgesendet!';
+        this.paragraphInputSend.textContent = `Vielen Dank für ihr Vertrauen. Wir haben Ihre Anfrage
+        erhalten und werden uns schnellst möglich darum kümmern.`;
+
         this.openUserInputSendWindow();
     }
 
-    buildUnsuccessfulSendWindowContent() {}
+    buildUnsuccessfulSendWindowContent() {
+        this.headlineInputSend.textContent =
+            'Upps, da ist was schief gelaufen!';
+        this.paragraphInputSend.textContent = `Die von Ihnen eingegebene Email Adresse entspricht nicht dem gängigen Format für Email Adressen`;
+        this.headlineInputSend.style.color = this.colorAlert;
+        this.paragraphInputSend.style.color = this.colorAlert;
+        this.openUserInputSendWindow();
+    }
 
     openUserInputSendWindow() {
         this.userInputSend.style.display = 'flex';
@@ -90,6 +111,8 @@ export default class Formdata {
 
     closeUserInputSendWindow() {
         this.userInputSendBtn.addEventListener('click', () => {
+            this.headlineInputSend.style.color = this.colorSuccess;
+            this.paragraphInputSend.style.color = this.colorSuccess;
             this.userInputSend.style.display = 'none';
         });
     }
