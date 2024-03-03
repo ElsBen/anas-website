@@ -4,6 +4,7 @@
         Hell Grün: #b4ffd8
         Dunkel Grün: #70c6c7
         Dunkel Grün Auswahl: #006b6b
+        Pastel Rot Alert: #ff7f50
 
  */
 
@@ -1172,6 +1173,14 @@ form > div > .no-resize {
     border-radius: 0.3rem 1rem 0.3rem 1rem;
     display: block;
     margin: auto;
+}
+
+.sub-information {
+    margin-right: 1rem;
+    font-size: 0.9rem;
+    width: max-content;
+    color: #b4ffd8;
+    float: right;
 }
 
 ::placeholder {
