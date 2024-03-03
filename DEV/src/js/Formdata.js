@@ -1,17 +1,24 @@
-import PerformanceSideData from './PerformanceSideData.js';
+// import PerformanceSideData from './PerformanceSideData.js';
 
 export default class Formdata {
     constructor() {
         this.form = document.querySelector('#form');
         this.userEntries = [];
-        this.savedInquiry = JSON.parse(localStorage.getItem('saveInquiry'));
-        this.performanceSideSelections = PerformanceSideData;
-        console.log(this.performanceSideSelections);
-        this.successfullSend = document.querySelector(
-            '.sended-successfull-container',
+
+        this.savedInquiry =
+            JSON.parse(localStorage.getItem('saveInquiry')) || [];
+
+        // this.performanceSideSelections = PerformanceSideData; SORGT ANSCHEINEND FÜR EINEN FEHLER !!!!!
+        // UM DATEN ZU ÜBERMITTELN COOKIES ODER LOCALSTORAGE VERWENDEN!!!!
+
+        this.validEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        this.userInputSend = document.querySelector(
+            '.sended-user-input-container',
         );
-        this.successfullSendBtn = document.querySelector(
-            '.successfull-send-btn',
+
+        this.userInputSendBtn = document.querySelector(
+            '.user-input-sended-btn',
         );
     }
 
@@ -40,9 +47,8 @@ export default class Formdata {
                 };
 
                 // Hier die Logik für den Abruf selektierter Pakete Implementieren!
-                console.log(this.performanceSideSelections);
 
-                this.checkEntriesValid();
+                this.checkEntriesValid(saveEntries, this.savedInquiry);
             });
         }
 
@@ -52,36 +58,39 @@ export default class Formdata {
         }, 10000);
     }
 
-    checkEntriesValid() {
-        // this.validEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-        // if (this.start.saveEntries.email = ){}
-        // console.log(this.start.saveEntries.email);
-        this.userEntries.push(this.start.saveEntries);
-        this.form.reset();
-        this.saveUserEntries(this.start.saveEntries, this.savedInquiry);
+    checkEntriesValid(checkEntries, checkInquiry) {
+        if (checkEntries.email.match(this.validEmail) && this.form) {
+            this.userEntries.push(checkEntries);
+            this.form.reset();
+            this.saveUserEntries(checkEntries, checkInquiry);
+        } else {
+            this.buildUnsuccessfulSendWindowContent();
+        }
     }
 
-    saveUserEntries(entries, inquiry) {
-        localStorage.setItem('saveInquiry', JSON.stringify(entries));
+    saveUserEntries(saveEntries, inquiry) {
+        localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
 
         this.userEntries = [];
         this.userEntries.push(inquiry);
-        this.openSuccessfullSendWindow();
-        // localStorage.removeItem('saveInquiry');
+        localStorage.removeItem('saveInquiry');
+        this.buildSuccessfulSendWindowContent();
     }
 
-    openSuccessfullSendWindow() {
-        this.successfullSend.style.display = 'flex';
-        this.closeSuccessfullSendWindow();
+    buildSuccessfulSendWindowContent() {
+        this.openUserInputSendWindow();
     }
 
-    closeSuccessfullSendWindow() {
-        this.successfullSendBtn.addEventListener('click', () => {
-            this.successfullSend.style.display = 'none';
+    buildUnsuccessfulSendWindowContent() {}
+
+    openUserInputSendWindow() {
+        this.userInputSend.style.display = 'flex';
+        this.closeUserInputSendWindow();
+    }
+
+    closeUserInputSendWindow() {
+        this.userInputSendBtn.addEventListener('click', () => {
+            this.userInputSend.style.display = 'none';
         });
     }
 }
-// Probleme beim Localstorage Wenn dieser anscheinend voll ist,
-// sorgt das dafür das im Browser eine Fehlermeldung entsteht und
-// die Webseite nicht meht ordnungsgemäß funktioniert!!!!

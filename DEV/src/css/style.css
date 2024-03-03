@@ -1201,7 +1201,7 @@ form > div > .no-resize {
 
 /* DIE BESTÄTIGUNG FÜR DAS ABGESENDETE FORMULAR */
 
-.sended-successfull-container {
+.sended-user-input-container {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
@@ -1213,7 +1213,7 @@ form > div > .no-resize {
     align-items: center;
 }
 
-.sended-successfull {
+.sended-user-input {
     width: 30%;
     height: max-content;
     padding: 1rem 1rem 2rem 1rem;
@@ -1224,7 +1224,7 @@ form > div > .no-resize {
     border: 1px solid #b4ffd8;
 }
 
-.sended-successfull > p {
+.sended-user-input > p {
     padding-bottom: 1rem;
 }
 
