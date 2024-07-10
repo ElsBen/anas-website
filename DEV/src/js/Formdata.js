@@ -29,14 +29,14 @@ export default class Formdata {
             this.colorSuccess = '#b4ffd8';
     
             this.userInputSendBtn = document.querySelector(
-                '.user-input-sended-btn',
+                '.user-input-sended-btn'
             );
         } else {console.log('Formular nicht vorhanden')}
        
     }
 
     start() {
-        if (this.savedInquiry && this.savedInquiry.length > 0) {
+        if (this.savedInquiry && this.savedInquiry.length >= 0) {
             this.userEntries = this.savedInquiry;
         }
 
@@ -83,19 +83,14 @@ export default class Formdata {
 
     saveUserEntries(saveEntries, inquiry) {
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
-        console.log(localStorage);
-        console.log(inquiry);
+        // console.log(localStorage);
+        // console.log(inquiry);
         this.userEntries = [];
         this.userEntries.push(inquiry);
         console.log(inquiry);
-        // Hier Checken warum die Daten nur beim vorhanden Log des inqury ins userEntries übenimmt
-        setTimeout(() => {
-            localStorage.removeItem('saveInquiry');
-            this.buildSuccessfulSendWindowContent();
-        }, 0);
-        
-        
-        
+        localStorage.removeItem('saveInquiry');
+        console.log(this.userEntries);
+        this.buildSuccessfulSendWindowContent();
     }
 
     buildSuccessfulSendWindowContent() {
