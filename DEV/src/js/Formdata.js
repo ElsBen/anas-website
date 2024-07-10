@@ -1,6 +1,7 @@
 // import PerformanceSideData from './PerformanceSideData.js';
 
 export default class Formdata {
+    
     constructor() {
         this.form = document.querySelector('#form');
         this.userEntries = [];
@@ -17,19 +18,21 @@ export default class Formdata {
             '.sended-user-input-container',
         );
 
-        this.userInputSendContent =
-            document.querySelector('.sended-user-input');
+        this.userInputSendContent = document.querySelector('.sended-user-input');
 
-        this.headlineInputSend = this.userInputSendContent.querySelector('h2');
+        if (this.form){
 
-        this.paragraphInputSend = this.userInputSendContent.querySelector('p');
-
-        this.colorAlert = '#ff7f50';
-        this.colorSuccess = '#b4ffd8';
-
-        this.userInputSendBtn = document.querySelector(
-            '.user-input-sended-btn',
-        );
+            this.headlineInputSend = this.userInputSendContent.querySelector('h2');
+            this.paragraphInputSend = this.userInputSendContent.querySelector('p');
+    
+            this.colorAlert = '#ff7f50';
+            this.colorSuccess = '#b4ffd8';
+    
+            this.userInputSendBtn = document.querySelector(
+                '.user-input-sended-btn',
+            );
+        } else {console.log('Formular nicht vorhanden')}
+       
     }
 
     start() {
@@ -57,7 +60,7 @@ export default class Formdata {
                 };
 
                 // Hier die Logik für den Abruf selektierter Pakete Implementieren!
-
+                
                 this.checkEntriesValid(saveEntries, this.savedInquiry);
             });
         }
@@ -80,11 +83,19 @@ export default class Formdata {
 
     saveUserEntries(saveEntries, inquiry) {
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
-
+        console.log(localStorage);
+        console.log(inquiry);
         this.userEntries = [];
         this.userEntries.push(inquiry);
-        localStorage.removeItem('saveInquiry');
-        this.buildSuccessfulSendWindowContent();
+        console.log(inquiry);
+        // Hier Checken warum die Daten nur beim vorhanden Log des inqury ins userEntries übenimmt
+        setTimeout(() => {
+            localStorage.removeItem('saveInquiry');
+            this.buildSuccessfulSendWindowContent();
+        }, 0);
+        
+        
+        
     }
 
     buildSuccessfulSendWindowContent() {
