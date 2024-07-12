@@ -96,7 +96,6 @@ export default class Picturegalerie {
     processArrKeyInHtmlCompatContent(arrId) {
         let imgIdString = '';
         let headLineContent = '';
-        console.log(arrId);
 
         if (arrId === 'specialPicArray') {
             imgIdString = 'special-galerie';

@@ -35,7 +35,6 @@ export default class Galerieview {
     showImage(arrName, index) {
         // let dontScrollBackground = document.getElementById('galerie-bereich');
         // dontScrollBackground.style.position = 'fixed';
-        console.log(arrName, index);
         const viewImage = document.querySelector('.image-view-container img');
         viewImage.src = arrName[index];
         // this.closePrevNextGallery();
@@ -84,7 +83,6 @@ export default class Galerieview {
              * welches dann die Funktion closeGallery aufruft.
              */
             this.closeButton.addEventListener('click', () => {
-                console.log(this.galleryViewContainer.style);
                 this.galleryViewContainer.style.display = 'none';
             });
 
@@ -118,8 +116,6 @@ export default class Galerieview {
                     (this.currentIndex + 1) % this.imgPath.length;
                 this.showImage(this.imgPath, this.currentIndex);
             });
-        } else {
-            console.log('Eines der Button Elemente fehlt!');
         }
     }
 
@@ -138,7 +134,6 @@ export default class Galerieview {
         clickableImages.forEach((image) => {
             image.addEventListener('click', (e) => {
                 e.preventDefault();
-                console.log(this.pictureArrays.bilderObjekt);
                 this.clickedImage(e);
             });
         });
@@ -154,7 +149,6 @@ export default class Galerieview {
     clickedImage(event) {
         const imageClicked = event.target;
         const imageId = imageClicked.id;
-        console.log(imageId);
         this.idToValidArrNameAndIndex(imageId);
     }
 
@@ -176,7 +170,6 @@ export default class Galerieview {
         const unvalidArrName = splitId[0];
 
         let validArrName;
-        console.log(unvalidArrName);
 
         // auf switch case umstellen!!!
         if (unvalidArrName === 'specialPicArray') {
@@ -188,12 +181,10 @@ export default class Galerieview {
         } else if (unvalidArrName === 'shootingPicArray') {
             validArrName = this.pictureArrays.bilderObjekt.shootingPicArray;
         }
+        
         this.imgPath = validArrName;
-        // HIER WEITER AUF SUCHE GEHEN WARUM DIE GALERIE NICHT ANGEZEIGT WIRD!!!
-        console.log(validArrName);
         const saveImgIndex = Number(splitId[1]);
         this.currentIndex = saveImgIndex;
-        console.log(this.currentIndex);
         this.showGallery(validArrName);
     }
 }
