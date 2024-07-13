@@ -1,10 +1,15 @@
+import Formdata from './Formdata.js'
+
 export default class PerformanceSideData {
+
     constructor() {
         this.formData = document.querySelectorAll('input');
         this.performanceBtn = document.getElementsByClassName(
             'leistungsbox-btn-auswaehlen',
         );
-        this.userSelections = [];
+        this.submitButton = document.getElementsByClassName('leistungsbox-btn-auswaehlen');
+        this.formDataModule = new Formdata;
+        this.userSelections = this.formDataModule.userSelections;
         this.selection = '';
     }
 
@@ -23,6 +28,7 @@ export default class PerformanceSideData {
                 });
             });
         });
+        this.iterateSubmitBtn();
     }
 
     validateUserSelection(selectionId) {
@@ -72,5 +78,14 @@ export default class PerformanceSideData {
 
     saveSelection() {
         this.userSelections.push(this.selection);
+        console.log(this.userSelections);
     }
+
+    iterateSubmitBtn(){
+        Array.from(this.submitButton).forEach(e => {
+            e.addEventListener('click', function() {
+                window.location.href = '../../kontakt.html';
+            });
+        })
+    };
 }

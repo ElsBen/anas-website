@@ -1,16 +1,16 @@
-// import PerformanceSideData from './PerformanceSideData.js';
+import PerformanceSideData from './PerformanceSideData.js';
 
 export default class Formdata {
     
     constructor() {
         this.form = document.querySelector('#form');
         this.userEntries = [];
+        this.userSelections = [];
+        console.log(this.userSelections);
+        
 
         this.savedInquiry =
             JSON.parse(localStorage.getItem('saveInquiry')) || [];
-
-        // this.performanceSideSelections = PerformanceSideData; SORGT ANSCHEINEND FÜR EINEN FEHLER !!!!!
-        // UM DATEN ZU ÜBERMITTELN COOKIES ODER LOCALSTORAGE VERWENDEN!!!!
 
         this.validEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -19,6 +19,7 @@ export default class Formdata {
         );
 
         this.userInputSendContent = document.querySelector('.sended-user-input');
+        
 
         if (this.form){
 
@@ -83,8 +84,6 @@ export default class Formdata {
 
     saveUserEntries(saveEntries, inquiry) {
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
-        // console.log(localStorage);
-        // console.log(inquiry);
         this.userEntries = [];
         this.userEntries.push(inquiry);
         console.log(inquiry);

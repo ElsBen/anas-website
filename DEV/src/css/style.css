@@ -619,8 +619,6 @@ body {
     margin-bottom: 3rem;
 }
 
-/* Evtl. diesen Bereich in den allgemeinen Buttonbereich schieben und den Klassennamen universel anpassen */
-
 .leistung-ansehen-btn {
     text-decoration: none;
     height: 40px;
@@ -856,6 +854,7 @@ body {
 
 #leistungsboxen-bereich > .leistungsboxen .leistungsbox {
     width: 90%;
+    min-height: 110%;
     height: auto;
     background-color: rgb(180, 255, 216, 0.7);
     text-align: center;
@@ -882,8 +881,18 @@ body {
     padding-left: 1.2rem;
 }
 
+.leistungsboxen > .container > .row > .col-2:nth-child(2) article{
+    padding-bottom: 5rem;
+}
+
 #leistungsboxen-bereich > .exklusiv-box-bereich {
     margin-bottom: 6rem;
+}
+
+@media (max-width: 840px){
+    .leistungsboxen .col-2{
+        width: 100%;
+    }
 }
 
 /* CHECKBOX STYLING ÜBERARBEITET */
