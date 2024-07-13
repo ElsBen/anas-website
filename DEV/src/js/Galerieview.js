@@ -48,7 +48,7 @@ export default class Galerieview {
      * @param {*diesem Parameter wird der Index des ausgewählten Bildes im jeweiligen Array übergeben}
      */
     showGallery(idToArrName) {
-        this.galleryViewContainer.style.display = 'block';
+        this.galleryViewContainer.style.display = 'flex';
         this.showImage(idToArrName, this.currentIndex);
     }
 

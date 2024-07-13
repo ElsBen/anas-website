@@ -1040,11 +1040,14 @@ body {
     top: 0;
     left: 0;
     display: none;
+    justify-content: center;
+    align-items: center;
     overflow: auto;
 }
 
 /* Hier schauen das dass div mittig ausgerichtet wird (chatgpt befragen) */
-.galerie-element-container{
+.galerie-element-container {
+    
     max-width: max-content;
     max-height: max-content;
     position: relative;
@@ -1056,8 +1059,8 @@ body {
 }
 
 .image-view-container > img {
-    max-width: 90vw;
-    max-height: 90vh;
+    max-width: 95vw;
+    max-height: 95vh;
     margin: 20px;
     border: 2px solid white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
@@ -1097,8 +1100,8 @@ body {
 
 .close-button {
     position: absolute;
-    top: 30px;
-    right: 35px;
+    top: 55px;
+    right: 30px;
     cursor: pointer;
     color: white;
     font-size: 24px;
