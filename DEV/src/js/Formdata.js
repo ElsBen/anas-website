@@ -11,6 +11,10 @@ export default class Formdata {
 
         this.savedInquiry =
             JSON.parse(localStorage.getItem('saveInquiry')) || [];
+        
+        this.savedPerformanceSelection = 
+            JSON.parse(localStorage.getItem('savePerformanceSelection')) || [];
+            console.log(this.savedPerformanceSelection);
 
         this.validEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -78,7 +82,7 @@ export default class Formdata {
             this.form.reset();
             this.saveUserEntries(checkEntries, checkInquiry);
         } else {
-            this.buildUnsuccessfulSendWindowContent();
+            this.buildUnsuccessfullSendWindowContent();
         }
     }
 
@@ -89,10 +93,25 @@ export default class Formdata {
         console.log(inquiry);
         localStorage.removeItem('saveInquiry');
         console.log(this.userEntries);
-        this.buildSuccessfulSendWindowContent();
+        this.getSavedPerformanceSelection()
+        // this.buildSuccessfullSendWindowContent();
     }
 
-    buildSuccessfulSendWindowContent() {
+    getSavedPerformanceSelection(){
+
+        let performanceSelection  = {
+
+        }
+
+        this.savedPerformanceSelection.forEach(e => {
+            console.log(e);
+            // i = 1;
+            performanceSelection = {...e};
+        });
+        console.log(performanceSelection);
+    }
+
+    buildSuccessfullSendWindowContent() {
         this.headlineInputSend.textContent = 'Erfolgreich abgesendet!';
         this.paragraphInputSend.textContent = `Vielen Dank für ihr Vertrauen. Wir haben Ihre Anfrage
         erhalten und werden uns schnellst möglich darum kümmern.`;
@@ -100,7 +119,7 @@ export default class Formdata {
         this.openUserInputSendWindow();
     }
 
-    buildUnsuccessfulSendWindowContent() {
+    buildUnsuccessfullSendWindowContent() {
         this.headlineInputSend.textContent =
             'Upps, da ist was schief gelaufen!';
         this.paragraphInputSend.textContent = `Die von Ihnen eingegebene Email Adresse entspricht nicht dem gängigen Format für Email Adressen`;

@@ -963,6 +963,7 @@ body {
     margin-right: auto;
     margin-top: 3rem;
     margin-bottom: 3rem;
+    cursor: pointer;
 }
 
 #leistungsboxen-bereich
@@ -1064,12 +1065,11 @@ body {
 
 .image-view-container {
     text-align: center;
-    margin-top: 2.5%;
 }
 
 .image-view-container > img {
-    max-width: 95vw;
-    max-height: 95vh;
+    max-width: 90vw;
+    max-height: 90vh;
     margin: 20px;
     border: 2px solid white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
@@ -1210,6 +1210,7 @@ form > div > .no-resize {
     border-radius: 0.3rem 1rem 0.3rem 1rem;
     display: block;
     margin: auto;
+    cursor: pointer;
 }
 
 .sub-information {
@@ -1279,7 +1280,7 @@ form > div > .no-resize {
 .impressum {
     width: 70%;
     height: 100%;
-    background-color: rgb(240, 248, 255, 0.4);
+    background-color: rgba(240, 248, 255, 0.556);
     margin-top: 150px;
     margin-left: auto;
     margin-right: auto;

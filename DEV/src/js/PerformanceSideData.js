@@ -15,9 +15,7 @@ export default class PerformanceSideData {
 
     checkInfo() {
         Array.from(this.performanceBtn).forEach((button) => {
-            button.addEventListener('click', (b) => {
-                // schauen ob die Daten ohne den Teil übermittelt werden können!
-                // b.preventDefault();
+            button.addEventListener('click', () => {
                 this.formData.forEach((inp) => {
                     let checkedValue = inp.checked;
                     if (checkedValue) {
@@ -78,7 +76,7 @@ export default class PerformanceSideData {
 
     saveSelection() {
         this.userSelections.push(this.selection);
-        console.log(this.userSelections);
+        localStorage.setItem('savePerformanceSelection', JSON.stringify(this.userSelections));
     }
 
     iterateSubmitBtn(){
