@@ -6,9 +6,7 @@ export default class Formdata {
         this.form = document.querySelector('#form');
         this.userEntries = [];
         this.userSelections = [];
-        console.log(this.userSelections);
         
-
         this.savedInquiry =
             JSON.parse(localStorage.getItem('saveInquiry')) || [];
         
@@ -63,8 +61,6 @@ export default class Formdata {
                     telephone: formTelNumber,
                     message: formMessage,
                 };
-
-                // Hier die Logik für den Abruf selektierter Pakete Implementieren!
                 
                 this.checkEntriesValid(saveEntries, this.savedInquiry);
             });
@@ -90,25 +86,23 @@ export default class Formdata {
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
         this.userEntries = [];
         this.userEntries.push(inquiry);
-        console.log(inquiry);
         localStorage.removeItem('saveInquiry');
-        console.log(this.userEntries);
         this.getSavedPerformanceSelection()
-        // this.buildSuccessfullSendWindowContent();
     }
-
+    
     getSavedPerformanceSelection(){
-
-        let performanceSelection  = {
-
-        }
-
-        this.savedPerformanceSelection.forEach(e => {
-            console.log(e);
-            // i = 1;
-            performanceSelection = {...e};
+        
+        let performanceSelection  = {}
+        
+        this.savedPerformanceSelection.forEach((e, i) => {
+            let selectionKey = 'selection' + i;
+            performanceSelection[selectionKey] = e;
         });
-        console.log(performanceSelection);
+        
+        this.userEntries[0].push(performanceSelection);
+        
+        localStorage.removeItem('savePerformanceSelection');
+        this.buildSuccessfullSendWindowContent();
     }
 
     buildSuccessfullSendWindowContent() {
@@ -121,7 +115,7 @@ export default class Formdata {
 
     buildUnsuccessfullSendWindowContent() {
         this.headlineInputSend.textContent =
-            'Upps, da ist was schief gelaufen!';
+            'Upps, da ist was schief gelaufen. Versuchen sie es noch einmal!';
         this.paragraphInputSend.textContent = `Die von Ihnen eingegebene Email Adresse entspricht nicht dem gängigen Format für Email Adressen`;
         this.headlineInputSend.style.color = this.colorAlert;
         this.paragraphInputSend.style.color = this.colorAlert;
