@@ -55,7 +55,6 @@ export default class Picturegalerie {
             ],
         };
 
-        // Selektieren und halten (Variable) des Galerie-Bereichs
         this.checkGalerieSide = document.querySelector('#galerie-bereich');
     }
 
@@ -85,11 +84,8 @@ export default class Picturegalerie {
     }
 
     /**
-     *Die processArrKeyInHtmlCompatContent-Funktion bekommt über einen Parameter den Array-Schlüssel übergeben.
-     *Erstellt zwei Variablen und definiert diese als String.
-     *Eine else-if-Anweisung prüft nun den Parameter auf Inhalt und
-     *setzt bei übereinstimmung den jeweiligen Wert in die vorher erstellte Variable ein,
-     *die wiederum an zwei Funktionen mit jeweils zwei Parametern übergeben werden
+     * Funktion liest die Pfade aus den Arrays aus und gibt diese mit einem Kontent für die Überschrift
+     * an die nächsten Funktionen weiter.
      * @param {*enthält den Array-Schlüssel} arrId
      */
 
@@ -116,13 +112,8 @@ export default class Picturegalerie {
     }
 
     /**
-     * Diese Funktion erhält über die beiden Untenstehenden Parameter den Wert für die ID
-     * des jeweiligen Galerie-Containers und den Überschriften-Namen der einzelnen Galerien.
-     * Es wird der Bereich für die Bildergalerie im HTML in einer Variable gehalten,
-     * dann werden Div-Container erstellt, jedes davon erhält eine ID und ein Class-Attribut.
-     * Als nächstes wird ein h1-tag für die Überschrift erstellt und
-     * erhält den Parameter headLineContent als Content.
-     * Alle erstellten Elemente werden eingefügt.
+     * Die Funktion erstellt im Galerie-Bereich einen Kontainer für die einzelnen Bildergalerien 
+     * und fügt die passende Überschrift und die einzelnen Bilder ein.
      * @param {*enthält den zuvor ausgewerteten ID-Namen für den Container} imgIdString
      * @param {*enthält den zuvor ausgewerteten Content für das h1-tag} headLineContent
      */
@@ -143,7 +134,7 @@ export default class Picturegalerie {
     /**
      * Funktion Iteriert über die Bilder-Arrays im Bilder-Objekt
      * und speichert den aktuellen Iterations-Wert in einer Variablen.
-     * Danach wird das HTML Gerüst erstellt und die Iterations-Werte eingetragen und dann ins HTML eingefügt
+     * Danach wird das HTML Gerüst erstellt und die Iterations-Werte eingetragen und im HTML eingefügt
      * @param {*enthält den Array-Schlüssel} arrKey
      * @param {*enthält den zuvor ausgewerteten ID-String für den Container} conId
      */

@@ -12,6 +12,7 @@ export default class Formdata {
         
         this.savedPerformanceSelection = 
             JSON.parse(localStorage.getItem('savePerformanceSelection')) || [];
+            localStorage.removeItem('savePerformanceSelection');
             console.log(this.savedPerformanceSelection);
 
         this.validEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -82,6 +83,7 @@ export default class Formdata {
         }
     }
 
+    
     saveUserEntries(saveEntries, inquiry) {
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
         this.userEntries = [];
@@ -90,6 +92,7 @@ export default class Formdata {
         this.getSavedPerformanceSelection()
     }
     
+    // Löschen des localStorage erfolgt nur bei absenden des Formulares, hierfür eine Logik schreiben.
     getSavedPerformanceSelection(){
         
         let performanceSelection  = {}
@@ -101,7 +104,7 @@ export default class Formdata {
         
         this.userEntries[0].push(performanceSelection);
         
-        localStorage.removeItem('savePerformanceSelection');
+        // localStorage.removeItem('savePerformanceSelection');
         this.buildSuccessfullSendWindowContent();
     }
 

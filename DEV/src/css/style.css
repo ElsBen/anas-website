@@ -1055,9 +1055,7 @@ body {
     overflow: auto;
 }
 
-/* Hier schauen das dass div mittig ausgerichtet wird (chatgpt befragen) */
 .galerie-element-container {
-    
     max-width: max-content;
     max-height: max-content;
     position: relative;
@@ -1084,13 +1082,13 @@ body {
 
 .image-view-navigation > .prev-button{
     float: left;
-    margin-left: 3rem;
+    margin-left: 30px;
     border-radius: 1rem 0.2rem 0.2rem 1rem;
 }
 
 .image-view-navigation > .next-button{
     float: right;
-    margin-right: 3rem;
+    margin-right: 30px;
     border-radius: 0.2rem 1rem 1rem 0.2rem;
 }
 
@@ -1109,7 +1107,7 @@ body {
 
 .close-button {
     position: absolute;
-    top: 55px;
+    top: 30px;
     right: 30px;
     cursor: pointer;
     color: white;
@@ -1177,19 +1175,6 @@ form > div > .input-fields {
     width: 60%;
     outline: 1px solid #70c6c7;
 }
-
-/* HIER NOCHMAL AUF VERWENDBARKEIT PRÜFEN!!! */
-
-/* input::user-valid {
-    color: #70c6c7;
-    outline-color: #70c6c7;
-    outline-style: auto;
-}
-
-input:user-invalid {
-    color: rosybrown;
-    outline-color: rosybrown;
-} */
 
 form > div > textarea {
     margin-bottom: 2rem;
@@ -1273,6 +1258,18 @@ form > div > .no-resize {
 
 .sended-user-input > p {
     padding-bottom: 1rem;
+}
+
+@media(max-width: 480px){
+    #transparent-background-image {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    form > div > .input-fields{
+        width: 80%;
+    }
 }
 
 /* IMPRESSUM */

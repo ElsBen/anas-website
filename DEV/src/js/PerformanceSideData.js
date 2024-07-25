@@ -2,6 +2,7 @@ import Formdata from './Formdata.js'
 
 export default class PerformanceSideData {
 
+    
     constructor() {
         this.formData = document.querySelectorAll('input');
         this.performanceBtn = document.getElementsByClassName(
