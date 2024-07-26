@@ -433,7 +433,7 @@ body {
 }
 
 .about-me-container > .row > .col-2 {
-    float: right;
+    /* float: right; überprüfen ob benötigt*/
     display: inline-block;
 }
 
@@ -500,7 +500,7 @@ body {
     .about-me-container > .row > .col-4 {
         display: inline-block;
         width: var(--max-width);
-        float: left;
+        /* float: left; überprüfen ob benötigt */
         margin-bottom: var(--smallest-spacing);
     }
 
