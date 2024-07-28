@@ -53,6 +53,8 @@
     --spacing-lg-1: 4rem;
     --spacing-lg-2: 5rem;
     --spacing-lg-3: 6rem;
+    
+    --spacing-lg-4: 6.25rem;
 
     --special-spacing-sm: 0.1rem;
     --special-spacing-sm-1: 0.2rem;
@@ -270,7 +272,7 @@ body {
 
 #header-nav {
     background-color: var(--main-color);
-    height: 60px;
+    height:  var(--special-spacing-lg-4);
     position: relative;
     font-size: var(--font-size-md);
     font-weight: bold;
@@ -367,7 +369,7 @@ body {
 #mobile-nav-content > ul > li {
     display: block;
     background-color: var(--main-color);
-    height: 50px;
+    height:  var(--spacing-lg);
     padding: var(--spacing-sm-4);
     padding-bottom: var(--spacing-lg);
     text-align: center;
@@ -386,7 +388,7 @@ body {
 #mobile-nav-content {
     position: absolute;
     left: -40px;
-    top: 60px;
+    top:  var(--special-spacing-lg-4);
     display: none;
 }
 
@@ -404,7 +406,7 @@ body {
 
 #header-nav .logo-link-mobile > img {
     margin-top: var(--spacing-zero);
-    height: 58px;
+    height: var(--special-spacing-lg-4);
 }
 
 @media (max-width: 990px) {
@@ -506,7 +508,7 @@ body {
 @media (max-width: 1135px) {
     .about-me-container {
         width: var(--responsive-spacing-17);
-        margin-top: 100px;
+        margin-top:  var(--special-spacing-lg-4);
     }
 
     .about-me-container .about-me-text > p {
@@ -610,7 +612,7 @@ body {
     padding: var(--spacing-sm-4) var(--spacing-sm-4) var(--spacing-md-2) var(--spacing-sm-4);
     width: var(--responsive-spacing-12);
     min-height: 330px;
-    margin-top: 50px;
+    margin-top:  var(--spacing-lg);
     margin-left: auto;
     margin-right: auto;
     background-color: #b4ffd8b3;
@@ -664,7 +666,7 @@ body {
 
 .leistung-ansehen-btn {
     text-decoration: none;
-    height: 40px;
+    height:  var(--special-spacing-lg-3);
     width: var(--responsive-spacing-8);
 }
 
@@ -880,7 +882,7 @@ body {
     }
 
     #galerie-uebersicht-bereich > .row > .col-3 > figure > figcaption {
-        margin-top: 8px;
+        margin-top:  var(--spacing-sm-1);
     }
 }
 
@@ -942,7 +944,7 @@ body {
 
 #leistungsboxen-bereich .leistungsbox > input[type='checkbox'] + label {
     position: relative;
-    padding-left: 20px;
+    padding-left: var(--spacing-sm-4);
     cursor: pointer;
 }
 
@@ -954,9 +956,9 @@ body {
     color: white;
     position: absolute;
     left: var(--spacing-zero);
-    top: 5px;
-    width: 10px;
-    height: 10px;
+    top: var(--special-spacing-sm-3);
+    width: var(--special-spacing-md-2);
+    height: var(--special-spacing-md-2);
     border: var(--border-line-thickness) solid var(--selection-color);
     background-color: #ffffff90;
 }
@@ -1107,7 +1109,7 @@ body {
 .image-view-container > img {
     max-width: 90vw;
     max-height: 90vh;
-    margin: 20px;
+    margin: var(--spacing-sm-4);
     border: var(--border-line-thickness) solid white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
@@ -1116,7 +1118,7 @@ body {
     width: var(--responsive-spacing-21);
     text-align: center;
     position: absolute;
-    bottom: 40px;
+    bottom:  var(--special-spacing-lg-3);
 }
 
 .image-view-navigation > .prev-button{
@@ -1132,7 +1134,7 @@ body {
 }
 
 .btn-img-detail {
-    padding: 10px 20px;
+    padding: var(--special-spacing-md)  var(--spacing-sm-4);
     background: rgb(51, 51, 51, 0.3);
     color: white;
     border: none;
@@ -1215,7 +1217,7 @@ form > div > .input-fields {
 
 form > div > textarea {
     margin-bottom: var(--spacing-md-2);
-    padding-top: 10px;
+    padding-top:  var(--special-spacing-md);
 }
 
 form > div > .no-resize {
