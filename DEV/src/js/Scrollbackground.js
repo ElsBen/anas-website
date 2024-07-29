@@ -1,4 +1,4 @@
-export default class Scrollanimation {
+export default class ScrollBackground {
     constructor() {
         this.backgroundImage = document.getElementById('background-image');
     }

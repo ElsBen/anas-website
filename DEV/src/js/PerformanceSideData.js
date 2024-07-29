@@ -1,4 +1,4 @@
-import Formdata from './Formdata.js'
+import FormData from './FormData.js'
 
 export default class PerformanceSideData {
 
@@ -9,7 +9,7 @@ export default class PerformanceSideData {
             'select-power-box-btn',
         );
         this.submitButton = document.getElementsByClassName('select-power-box-btn');
-        this.formDataModule = new Formdata;
+        this.formDataModule = new FormData;
         this.userSelections = this.formDataModule.userSelections;
         this.selection = '';
     }

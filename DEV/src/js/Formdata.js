@@ -1,6 +1,4 @@
-import PerformanceSideData from './PerformanceSideData.js';
-
-export default class Formdata {
+export default class FormData {
     
     constructor() {
         this.form = document.querySelector('#form');

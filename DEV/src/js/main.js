@@ -1,38 +1,38 @@
 'use strict';
 
-import Scrollanimation from './Scrollbackground.js';
-import Picturegalerie from './Picgalerie.js';
-import Galerieview from './Galerieview.js';
-import Formdata from './Formdata.js';
+import ScrollBackground from './ScrollBackground.js';
+import PictureGallery from './PicGallery.js';
+import GalleryView from './GalleryView.js';
+import FormData from './FormData.js';
 import PerformanceSideData from './PerformanceSideData.js';
 
 // Logik für die Backgroundimage Scrollanimation
 
 document.addEventListener('wheel', function (e) {
-    const backgroundAnimation = new Scrollanimation();
+    const backgroundAnimation = new ScrollBackground();
     backgroundAnimation.start(e);
 });
 
-// BILDERGALERIE
+// PICTURE-GALLERY
 
 /**
  * Mit diesem Eventlistener wir abgewartet bis das DOM vollständig geladen wurde,
  * dann erst wird die erste Funktion gestartet.
  */
 document.addEventListener('DOMContentLoaded', function () {
-    const picGalerieStart = new Picturegalerie();
+    const picGalerieStart = new PictureGallery();
     picGalerieStart.htmlContentCheck();
 
-    const galerieViewStart = new Galerieview();
+    const galerieViewStart = new GalleryView();
     galerieViewStart.iterateOverClickableImages();
 });
 
 // Logik (Aufruf) für das validieren und erstellen der Formulardaten
 
-const formdataStart = new Formdata();
+const formdataStart = new FormData();
 formdataStart.start();
 
-// LEISTUNGSSEITE
+// PERFORMANCE-SIDE
 
 const performanceSide = new PerformanceSideData();
 performanceSide.checkInfo();

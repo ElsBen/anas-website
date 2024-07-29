@@ -1,8 +1,8 @@
-import Picturegalerie from './Picgalerie.js';
+import PictureGallery from './PicGallery.js';
 
-export default class Galerieview {
+export default class GalleryView {
     constructor() {
-        this.pictureArrays = new Picturegalerie();
+        this.pictureArrays = new PictureGallery();
         /**
          * Die Variablen für die Galeriesteuerung, Bilder-Arrays und container für die Großansicht wurden 
          * Global gesetzt, damit die einzelnen Funktionen darauf Zugriff haben.

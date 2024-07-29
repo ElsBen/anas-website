@@ -1,4 +1,4 @@
-export default class Picturegalerie {
+export default class PictureGallery {
     constructor() {
         /**
          * Ein Bilder-Objekt mit vier Arrays,
