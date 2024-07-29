@@ -9,7 +9,7 @@ export default class Galerieview {
          */
 
         this.galleryViewContainer = document.querySelector(
-            '.galerie-view-container',
+            '.gallery-view-container',
         );
         this.closeButton = document.querySelector('.close-button');
         this.prevButton = document.querySelector('.prev-button');

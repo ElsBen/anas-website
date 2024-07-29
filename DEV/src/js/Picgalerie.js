@@ -55,7 +55,7 @@ export default class Picturegalerie {
             ],
         };
 
-        this.checkGalerieSide = document.querySelector('#galerie-bereich');
+        this.checkGalerieSide = document.querySelector('#gallery-area');
     }
 
     /**
@@ -118,7 +118,7 @@ export default class Picturegalerie {
      * @param {*enthält den zuvor ausgewerteten Content für das h1-tag} headLineContent
      */
     buildHtmlContent(imgIdString, headLineContent) {
-        let picArea = document.getElementById('galerie-bereich');
+        let picArea = document.getElementById('gallery-area');
 
         let imgContainer = document.createElement('div');
         imgContainer.setAttribute('id', imgIdString);

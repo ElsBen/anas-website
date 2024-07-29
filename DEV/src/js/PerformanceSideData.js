@@ -6,9 +6,9 @@ export default class PerformanceSideData {
     constructor() {
         this.formData = document.querySelectorAll('input');
         this.performanceBtn = document.getElementsByClassName(
-            'leistungsbox-btn-auswaehlen',
+            'select-power-box-btn',
         );
-        this.submitButton = document.getElementsByClassName('leistungsbox-btn-auswaehlen');
+        this.submitButton = document.getElementsByClassName('select-power-box-btn');
         this.formDataModule = new Formdata;
         this.userSelections = this.formDataModule.userSelections;
         this.selection = '';

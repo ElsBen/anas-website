@@ -12,6 +12,7 @@ export default class Formdata {
         
         this.savedPerformanceSelection = 
             JSON.parse(localStorage.getItem('savePerformanceSelection')) || [];
+
             localStorage.removeItem('savePerformanceSelection');
             console.log(this.savedPerformanceSelection);
 
@@ -92,7 +93,6 @@ export default class Formdata {
         this.getSavedPerformanceSelection()
     }
     
-    // Löschen des localStorage erfolgt nur bei absenden des Formulares, hierfür eine Logik schreiben.
     getSavedPerformanceSelection(){
         
         let performanceSelection  = {}
@@ -104,7 +104,6 @@ export default class Formdata {
         
         this.userEntries[0].push(performanceSelection);
         
-        // localStorage.removeItem('savePerformanceSelection');
         this.buildSuccessfullSendWindowContent();
     }
 
