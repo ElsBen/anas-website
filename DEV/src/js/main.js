@@ -6,7 +6,7 @@ import GalleryView from './GalleryView.js';
 import FormData from './FormData.js';
 import PerformanceSideData from './PerformanceSideData.js';
 
-// Logik für die Backgroundimage Scrollanimation
+// Logik für die Backgroundimage Scrollanimation !
 
 document.addEventListener('wheel', function (e) {
     const backgroundAnimation = new ScrollBackground();
