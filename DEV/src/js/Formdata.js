@@ -5,6 +5,10 @@ export default class FormData {
         this.userEntries = [];
         this.userSelections = [];
         
+        /**
+         * Werte aus dem Localstorage holen und umwandeln in ein Array.
+         * Leeren des Localstorage 'performance selection' damit dieser nicht Überlastet wird.
+         */
         this.savedInquiry =
             JSON.parse(localStorage.getItem('saveInquiry')) || [];
         
@@ -22,15 +26,15 @@ export default class FormData {
 
         this.userInputSendContent = document.querySelector('.sended-user-input');
         
-
+        /**
+         * Stellt sicher das dass Formular vorhanden ist und hält die 
+         * Werte für das Fenster beim erfolglosen oder erfolgreichen abschicken des Formulars.
+         */
         if (this.form){
-
             this.headlineInputSend = this.userInputSendContent.querySelector('h2');
             this.paragraphInputSend = this.userInputSendContent.querySelector('p');
-    
             this.colorAlert = '#ff7f50';
             this.colorSuccess = '#b4ffd8';
-    
             this.userInputSendBtn = document.querySelector(
                 '.user-input-sended-btn'
             );
@@ -38,6 +42,12 @@ export default class FormData {
        
     }
 
+    /**
+     * Holt sich die vorhandenen Werte aus dem Localstorage.
+     * Prüft ob Form vorhanden ist.
+     * Der Eventlistener wird gesetzt und beim absenden des Form 
+     * werden die Werte der einzelnen Inputs geholt und in einem Objekt gehalten.
+     */
     start() {
         if (this.savedInquiry && this.savedInquiry.length >= 0) {
             this.userEntries = this.savedInquiry;
@@ -72,6 +82,13 @@ export default class FormData {
         }, 10000);
     }
 
+    /**
+     * Email wird validiert und Form auf Existenz geprüft.
+     * Das Objekt wird in userEntries-Array gepusht und das 
+     * Formular zurückgesetzt.
+     * @param {object} checkEntries enthält die Einträge aus den Input's
+     * @param {array} checkInquiry Werte aus dem localstorage die im Array gehalten werden
+     */
     checkEntriesValid(checkEntries, checkInquiry) {
         if (checkEntries.email.match(this.validEmail) && this.form) {
             this.userEntries.push(checkEntries);
@@ -82,7 +99,14 @@ export default class FormData {
         }
     }
 
-    
+    /**
+     * Die Nutzereinträge werden im Localstorage gehalten.
+     * Das userEnries-Array wird gelöscht 
+     * und mit den neuen Werten aus dem Storage Überschrieben.
+     * Localstorage für die Einträge wird gelöscht.
+     * @param {object} saveEntries enthält die Einträge aus den Input's
+     * @param {array} inquiry Werte aus dem localstorage die im Array gehalten werden
+     */
     saveUserEntries(saveEntries, inquiry) {
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
         this.userEntries = [];
@@ -91,8 +115,14 @@ export default class FormData {
         this.getSavedPerformanceSelection()
     }
     
+    /**
+     * Ein neues Objekt für die PerformanceSelection wird erstellt 
+     * und auf die Übergebene Selection wird iteriert.
+     * Hier werden die Werte und der Index als Parameter gehalten, 
+     * als Schlüssel-Werte paare im erstellten Objekt eingefügt
+     * und im Einträge-Array hinzugefügt.
+     */
     getSavedPerformanceSelection(){
-        
         let performanceSelection  = {}
         
         this.savedPerformanceSelection.forEach((e, i) => {
@@ -101,15 +131,19 @@ export default class FormData {
         });
         
         this.userEntries[0].push(performanceSelection);
-        
         this.buildSuccessfullSendWindowContent();
     }
 
+    /**
+     * Bei erfolgreichem absenden (oder nicht erfolgreich) 
+     * wird hier der entsprechende Text und die Farbe gesetzt.
+     */
     buildSuccessfullSendWindowContent() {
         this.headlineInputSend.textContent = 'Erfolgreich abgesendet!';
         this.paragraphInputSend.textContent = `Vielen Dank für ihr Vertrauen. Wir haben Ihre Anfrage
         erhalten und werden uns schnellst möglich darum kümmern.`;
-
+        this.headlineInputSend.style.color = this.colorSuccess;
+        this.paragraphInputSend.style.color = this.colorSuccess;
         this.openUserInputSendWindow();
     }
 
@@ -122,15 +156,19 @@ export default class FormData {
         this.openUserInputSendWindow();
     }
 
+    /**
+     * Fenster für den Statusbericht des Form wird sichtbar gemacht.
+     */
     openUserInputSendWindow() {
         this.userInputSend.style.display = 'flex';
         this.closeUserInputSendWindow();
     }
 
+    /**
+     * Fenster wird wieder durch Button-Klick wieder geschloßen.
+     */
     closeUserInputSendWindow() {
         this.userInputSendBtn.addEventListener('click', () => {
-            this.headlineInputSend.style.color = this.colorSuccess;
-            this.paragraphInputSend.style.color = this.colorSuccess;
             this.userInputSend.style.display = 'none';
         });
     }

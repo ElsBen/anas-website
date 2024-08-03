@@ -1,5 +1,11 @@
 export default class PictureGallery {
     constructor() {
+
+        // this.specialPicPath = './src/img/galerie-bibliothek/besonderes/';
+        // this.weddingPicPath = './src/img/galerie-bibliothek/hochzeiten/';
+        // this.eventsPicPath = './src/img/galerie-bibliothek/events/';
+        // this.shootingPicPath = './src/img/galerie-bibliothek/shootings/';
+
         /**
          * Ein Bilder-Objekt mit vier Arrays,
          * welche Dateipfade zu den einzelnen Bildern
@@ -7,54 +13,54 @@ export default class PictureGallery {
          */
         this.bilderObjekt = {
             specialPicArray: [
-                './src/img/galerie-bibliothek/besonderes/special001.jpg',
-                './src/img/galerie-bibliothek/besonderes/special002.jpg',
-                './src/img/galerie-bibliothek/besonderes/special003.jpg',
-                './src/img/galerie-bibliothek/besonderes/special004.jpg',
-                './src/img/galerie-bibliothek/besonderes/special005.jpg',
-                './src/img/galerie-bibliothek/besonderes/special006.jpg',
-                './src/img/galerie-bibliothek/besonderes/special007.jpg',
-                './src/img/galerie-bibliothek/besonderes/special008.jpg',
-                './src/img/galerie-bibliothek/besonderes/special009.jpg',
+                "special001.jpg",
+                "special002.jpg",
+                "special003.jpg",
+                "special004.jpg",
+                "special005.jpg",
+                "special006.jpg",
+                "special007.jpg",
+                "special008.jpg",
+                "special009.jpg",
             ],
 
             weddingPicArray: [
-                './src/img/galerie-bibliothek/hochzeiten/wedding001.jpg',
-                './src/img/galerie-bibliothek/hochzeiten/wedding002.jpg',
-                './src/img/galerie-bibliothek/hochzeiten/wedding003.jpg',
-                './src/img/galerie-bibliothek/hochzeiten/wedding004.jpg',
-                './src/img/galerie-bibliothek/hochzeiten/wedding005.jpg',
-                './src/img/galerie-bibliothek/hochzeiten/wedding006.jpg',
-                './src/img/galerie-bibliothek/hochzeiten/wedding007.jpg',
-                './src/img/galerie-bibliothek/hochzeiten/wedding008.jpg',
-                './src/img/galerie-bibliothek/hochzeiten/wedding009.jpg',
+                "wedding001.jpg",
+                "wedding002.jpg",
+                "wedding003.jpg",
+                "wedding004.jpg",
+                "wedding005.jpg",
+                "wedding006.jpg",
+                "wedding007.jpg",
+                "wedding008.jpg",
+                "wedding009.jpg",
             ],
 
             eventsPicArray: [
-                './src/img/galerie-bibliothek/events/event001.jpg',
-                './src/img/galerie-bibliothek/events/event002.jpg',
-                './src/img/galerie-bibliothek/events/event003.jpg',
-                './src/img/galerie-bibliothek/events/event004.jpg',
-                './src/img/galerie-bibliothek/events/event005.jpg',
-                './src/img/galerie-bibliothek/events/event006.jpg',
-                './src/img/galerie-bibliothek/events/event007.jpg',
-                './src/img/galerie-bibliothek/events/event008.jpg',
-                './src/img/galerie-bibliothek/events/event009.jpg',
+                "event001.jpg",
+                "event002.jpg",
+                "event003.jpg",
+                "event004.jpg",
+                "event005.jpg",
+                "event006.jpg",
+                "event007.jpg",
+                "event008.jpg",
+                "event009.jpg",
             ],
 
             shootingPicArray: [
-                './src/img/galerie-bibliothek/shootings/shooting001.jpg',
-                './src/img/galerie-bibliothek/shootings/shooting002.jpg',
-                './src/img/galerie-bibliothek/shootings/shooting003.jpg',
-                './src/img/galerie-bibliothek/shootings/shooting004.jpg',
-                './src/img/galerie-bibliothek/shootings/shooting005.jpg',
-                './src/img/galerie-bibliothek/shootings/shooting006.jpg',
-                './src/img/galerie-bibliothek/shootings/shooting007.jpg',
-                './src/img/galerie-bibliothek/shootings/shooting008.jpg',
-                './src/img/galerie-bibliothek/shootings/shooting009.jpg',
+                "shooting001.jpg",
+                "shooting002.jpg",
+                "shooting003.jpg",
+                "shooting004.jpg",
+                "shooting005.jpg",
+                "shooting006.jpg",
+                "shooting007.jpg",
+                "shooting008.jpg",
+                "shooting009.jpg",
             ],
         };
-
+        
         this.checkGalerieSide = document.querySelector('#gallery-area');
     }
 
@@ -84,31 +90,42 @@ export default class PictureGallery {
     }
 
     /**
-     * Funktion liest die Pfade aus den Arrays aus und gibt diese mit einem Kontent für die Überschrift
+     * Funktion liest die Bildernamen aus den Arrays aus und gibt diese mit einem Kontent für die Überschrift
+     * und dem entsprechenden Pfad
      * an die nächsten Funktionen weiter.
-     * @param {*enthält den Array-Schlüssel} arrId
+     * Der Pfad wird separat gesetzt um die thumbnails und Einzelansicht separat ansteuern zu können.
+     * @param {enthält den Array-Schlüssel} arrId
      */
 
     processArrKeyInHtmlCompatContent(arrId) {
         let imgIdString = '';
         let headLineContent = '';
+        let picPath = '';
 
-        if (arrId === 'specialPicArray') {
-            imgIdString = 'special-galerie';
-            headLineContent = 'Besondere Fotogalerie';
-        } else if (arrId === 'weddingPicArray') {
-            imgIdString = 'wedding-galerie';
-            headLineContent = 'Hochzeits Galerie';
-        } else if (arrId === 'eventsPicArray') {
-            imgIdString = 'event-galerie';
-            headLineContent = 'Event Galerie';
-        } else if (arrId === 'shootingPicArray') {
-            imgIdString = 'shooting-galerie';
-            headLineContent = 'Fotoshooting Galerie';
+        switch (arrId) {
+            case 'specialPicArray':
+                imgIdString = 'special-galerie';
+                headLineContent = 'Besondere Fotogalerie';
+                picPath = './src/img/galerie-bibliothek/besonderes/';
+                break;
+            case 'weddingPicArray':
+                imgIdString = 'wedding-galerie';
+                headLineContent = 'Hochzeits Galerie';
+                picPath = './src/img/galerie-bibliothek/hochzeiten/';
+                break;
+            case 'eventsPicArray':
+                imgIdString = 'event-galerie';
+                headLineContent = 'Event Galerie';
+                picPath = './src/img/galerie-bibliothek/events/';
+                break;
+            case 'shootingPicArray':
+                imgIdString = 'shooting-galerie';
+                headLineContent = 'Fotoshooting Galerie';
+                picPath = './src/img/galerie-bibliothek/shootings/';
+                break;
         }
-
         this.buildHtmlContent(imgIdString, headLineContent);
-        this.insertImages(arrId, imgIdString);
+        this.insertImages(arrId, imgIdString, picPath);
     }
 
     /**
@@ -134,16 +151,20 @@ export default class PictureGallery {
     /**
      * Funktion Iteriert über die Bilder-Arrays im Bilder-Objekt
      * und speichert den aktuellen Iterations-Wert in einer Variablen.
+     * Der Pfad wird zusammengefügt.
      * Danach wird das HTML Gerüst erstellt und die Iterations-Werte eingetragen und im HTML eingefügt
-     * @param {*enthält den Array-Schlüssel} arrKey
-     * @param {*enthält den zuvor ausgewerteten ID-String für den Container} conId
+     * @param {string} arrKey enthält den Schlüssel für das Array
+     * @param {string} conId enthält den ID-String für die einzelne Galerie
+     * @param {string} path enthält den Pfad zum Bild
      */
 
-    insertImages(arrKey, conId) {
+    insertImages(arrKey, conId, path) {
         const container = document.getElementById(conId);
 
         for (let i = 0; i < this.bilderObjekt[arrKey].length; i++) {
-            const imageSrc = this.bilderObjekt[arrKey][i];
+            const imageName = this.bilderObjekt[arrKey][i];
+            const imageSrc = path + imageName;
+            console.log(imageSrc);
 
             const anchorElement = document.createElement('a');
             anchorElement.href = imageSrc;

@@ -24,6 +24,7 @@ export default class GalleryView {
         this.imgPath;
     }
 
+
     /**
      *Funktion setzt den Pfad zum Bild in das img-tag ein
      * @param {*diese Parameter enthält den Namen des ausgwählten Arrays} arrName
@@ -112,15 +113,19 @@ export default class GalleryView {
 
         let validArrName;
 
-        // auf switch case umstellen!!!
-        if (unvalidArrName === 'specialPicArray') {
-            validArrName = this.pictureArrays.bilderObjekt.specialPicArray;
-        } else if (unvalidArrName === 'weddingPicArray') {
-            validArrName = this.pictureArrays.bilderObjekt.weddingPicArray;
-        } else if (unvalidArrName === 'eventsPicArray') {
-            validArrName = this.pictureArrays.bilderObjekt.eventsPicArray;
-        } else if (unvalidArrName === 'shootingPicArray') {
-            validArrName = this.pictureArrays.bilderObjekt.shootingPicArray;
+        switch (unvalidArrName){
+            case 'specialPicArray':
+                validArrName = this.pictureArrays.bilderObjekt.specialPicArray;
+                break;
+            case 'weddingPicArray':
+                validArrName = this.pictureArrays.bilderObjekt.weddingPicArray;
+                break;
+            case 'eventsPicArray':
+                validArrName = this.pictureArrays.bilderObjekt.eventsPicArray;
+                break;
+            case 'shootingPicArray':
+                validArrName = this.pictureArrays.bilderObjekt.shootingPicArray;
+                break;
         }
         
         this.imgPath = validArrName;

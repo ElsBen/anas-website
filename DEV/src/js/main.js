@@ -6,7 +6,7 @@ import GalleryView from './GalleryView.js';
 import FormData from './FormData.js';
 import PerformanceSideData from './PerformanceSideData.js';
 
-// Logik für die Backgroundimage Scrollanimation !
+// Logik für die Backgroundimage Scrollanimation
 
 document.addEventListener('wheel', function (e) {
     const backgroundAnimation = new ScrollBackground();
@@ -16,8 +16,8 @@ document.addEventListener('wheel', function (e) {
 // PICTURE-GALLERY
 
 /**
- * Mit diesem Eventlistener wir abgewartet bis das DOM vollständig geladen wurde,
- * dann erst wird die erste Funktion gestartet.
+ * Mit diesem Eventlistener wird abgewartet damit das DOM vollständig geladen wird,
+ * bevor die Logik für die Galerie ausgeführt wird.
  */
 document.addEventListener('DOMContentLoaded', function () {
     const picGalerieStart = new PictureGallery();
