@@ -1,10 +1,12 @@
 export default class PictureGallery {
     constructor() {
 
-        // this.specialPicPath = './src/img/galerie-bibliothek/besonderes/';
-        // this.weddingPicPath = './src/img/galerie-bibliothek/hochzeiten/';
-        // this.eventsPicPath = './src/img/galerie-bibliothek/events/';
-        // this.shootingPicPath = './src/img/galerie-bibliothek/shootings/';
+        this.specialPicPath = './src/img/galerie-bibliothek/besonderes/';
+        this.weddingPicPath = './src/img/galerie-bibliothek/hochzeiten/';
+        this.eventsPicPath = './src/img/galerie-bibliothek/events/';
+        this.shootingPicPath = './src/img/galerie-bibliothek/shootings/';
+
+        this.forThumbnails = 'thumbnails/';
 
         /**
          * Ein Bilder-Objekt mit vier Arrays,
@@ -106,22 +108,22 @@ export default class PictureGallery {
             case 'specialPicArray':
                 imgIdString = 'special-galerie';
                 headLineContent = 'Besondere Fotogalerie';
-                picPath = './src/img/galerie-bibliothek/besonderes/';
+                picPath = this.specialPicPath;
                 break;
             case 'weddingPicArray':
                 imgIdString = 'wedding-galerie';
                 headLineContent = 'Hochzeits Galerie';
-                picPath = './src/img/galerie-bibliothek/hochzeiten/';
+                picPath = this.weddingPicPath;
                 break;
             case 'eventsPicArray':
                 imgIdString = 'event-galerie';
                 headLineContent = 'Event Galerie';
-                picPath = './src/img/galerie-bibliothek/events/';
+                picPath = this.eventsPicPath;
                 break;
             case 'shootingPicArray':
                 imgIdString = 'shooting-galerie';
                 headLineContent = 'Fotoshooting Galerie';
-                picPath = './src/img/galerie-bibliothek/shootings/';
+                picPath = this.shootingPicPath;
                 break;
         }
         this.buildHtmlContent(imgIdString, headLineContent);
@@ -163,8 +165,8 @@ export default class PictureGallery {
 
         for (let i = 0; i < this.bilderObjekt[arrKey].length; i++) {
             const imageName = this.bilderObjekt[arrKey][i];
-            const imageSrc = path + imageName;
-            console.log(imageSrc);
+            const imageSrc = path + this.forThumbnails + imageName;
+            
 
             const anchorElement = document.createElement('a');
             anchorElement.href = imageSrc;
@@ -173,6 +175,7 @@ export default class PictureGallery {
             imageElement.setAttribute('class', 'clickable-image');
             imageElement.setAttribute(`id`, `${arrKey + `-` + i}`);
             imageElement.src = imageSrc;
+            imageElement.loading = 'lazy';
             anchorElement.appendChild(imageElement);
 
             container.appendChild(anchorElement);

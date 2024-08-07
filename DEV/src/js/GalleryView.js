@@ -18,10 +18,11 @@ export default class GalleryView {
 
         /**
          * currentIndex bekommt den wert im Array als Zähler für die Bildervorschau,
-         * in imgPath wird das komplette Array, in dem sich das Bild welches vom User geklickt wurde, gehalten.
+         * in imgName wird das komplette Array, in dem sich das Bild welches vom User geklickt wurde, gehalten.
          */
         this.currentIndex = 0;
-        this.imgPath;
+        this.imgName;
+        this.dirPath;
     }
 
 
@@ -30,10 +31,10 @@ export default class GalleryView {
      * @param {*diese Parameter enthält den Namen des ausgwählten Arrays} arrName
      * @param {*erhält den ausgewählten Index des Bildes im jeweiligen Array} index
      */
-
     showImage(arrName, index) {
+        const compPicPath = this.dirPath + arrName[index]
         const viewImage = document.querySelector('.image-view-container img');
-        viewImage.src = arrName[index];
+        viewImage.src = compPicPath;
     }
 
     /**
@@ -51,7 +52,7 @@ export default class GalleryView {
      * indem es mit style.display auf den CSS-Wert diplay zugreift und ihn auf none setzt.
      * Events für die Interaktion mit dem User bei klick auf die Bildernavigation ( Bild vor und zurück).
      * @param {*enthält den neu errechenten Index im ausgewählten Array} currentIndex
-     * @param {*enthält die Variable in dem das ausgewählte Array geschrieben wurde} imgPath
+     * @param {*enthält die Variable in dem das ausgewählte Array geschrieben wurde} imgName
      */
     closePrevNextGallery() {
 
@@ -62,15 +63,15 @@ export default class GalleryView {
 
             this.prevButton.addEventListener('click', () => {
                 this.currentIndex =
-                    (this.currentIndex - 1 + this.imgPath.length) %
-                    this.imgPath.length;
-                this.showImage(this.imgPath, this.currentIndex);
+                    (this.currentIndex - 1 + this.imgName.length) %
+                    this.imgName.length;
+                this.showImage(this.imgName, this.currentIndex);
             });
 
             this.nextButton.addEventListener('click', () => {
                 this.currentIndex =
-                    (this.currentIndex + 1) % this.imgPath.length;
-                this.showImage(this.imgPath, this.currentIndex);
+                    (this.currentIndex + 1) % this.imgName.length;
+                this.showImage(this.imgName, this.currentIndex);
             });
         }
     }
@@ -116,19 +117,23 @@ export default class GalleryView {
         switch (unvalidArrName){
             case 'specialPicArray':
                 validArrName = this.pictureArrays.bilderObjekt.specialPicArray;
+                this.dirPath = this.pictureArrays.specialPicPath;
                 break;
             case 'weddingPicArray':
                 validArrName = this.pictureArrays.bilderObjekt.weddingPicArray;
+                this.dirPath = this.pictureArrays.weddingPicPath;
                 break;
             case 'eventsPicArray':
                 validArrName = this.pictureArrays.bilderObjekt.eventsPicArray;
+                this.dirPath = this.pictureArrays.eventsPicPath;
                 break;
             case 'shootingPicArray':
                 validArrName = this.pictureArrays.bilderObjekt.shootingPicArray;
+                this.dirPath = this.pictureArrays.shootingPicPath;
                 break;
         }
         
-        this.imgPath = validArrName;
+        this.imgName = validArrName;
         const saveImgIndex = Number(splitId[1]);
         this.currentIndex = saveImgIndex;
         this.showGallery(validArrName);
