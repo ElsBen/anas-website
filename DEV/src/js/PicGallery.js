@@ -15,51 +15,51 @@ export default class PictureGallery {
          */
         this.picObject = {
             specialPicArray: [
-                "special001.jpg",
-                "special002.jpg",
-                "special003.jpg",
-                "special004.jpg",
-                "special005.jpg",
-                "special006.jpg",
-                "special007.jpg",
-                "special008.jpg",
-                "special009.jpg",
+                "special001.avif",
+                "special002.avif",
+                "special003.avif",
+                "special004.avif",
+                "special005.avif",
+                "special006.avif",
+                "special007.avif",
+                "special008.avif",
+                "special009.avif",
             ],
 
             weddingPicArray: [
-                "wedding001.jpg",
-                "wedding002.jpg",
-                "wedding003.jpg",
-                "wedding004.jpg",
-                "wedding005.jpg",
-                "wedding006.jpg",
-                "wedding007.jpg",
-                "wedding008.jpg",
-                "wedding009.jpg",
+                "wedding001.avif",
+                "wedding002.avif",
+                "wedding003.avif",
+                "wedding004.avif",
+                "wedding005.avif",
+                "wedding006.avif",
+                "wedding007.avif",
+                "wedding008.avif",
+                "wedding009.avif",
             ],
 
             eventsPicArray: [
-                "event001.jpg",
-                "event002.jpg",
-                "event003.jpg",
-                "event004.jpg",
-                "event005.jpg",
-                "event006.jpg",
-                "event007.jpg",
-                "event008.jpg",
-                "event009.jpg",
+                "event001.avif",
+                "event002.avif",
+                "event003.avif",
+                "event004.avif",
+                "event005.avif",
+                "event006.avif",
+                "event007.avif",
+                "event008.avif",
+                "event009.avif",
             ],
 
             shootingPicArray: [
-                "shooting001.jpg",
-                "shooting002.jpg",
-                "shooting003.jpg",
-                "shooting004.jpg",
-                "shooting005.jpg",
-                "shooting006.jpg",
-                "shooting007.jpg",
-                "shooting008.jpg",
-                "shooting009.jpg",
+                "shooting001.avif",
+                "shooting002.avif",
+                "shooting003.avif",
+                "shooting004.avif",
+                "shooting005.avif",
+                "shooting006.avif",
+                "shooting007.avif",
+                "shooting008.avif",
+                "shooting009.avif",
             ],
         };
         
@@ -101,33 +101,38 @@ export default class PictureGallery {
 
     processArrKeyInHtmlCompatContent(arrId) {
         let imgIdString = '';
+        let imgAltContent = '';
         let headLineContent = '';
         let picPath = '';
 
         switch (arrId) {
             case 'specialPicArray':
                 imgIdString = 'special-galerie';
+                imgAltContent = 'Bild in der besondere Fotogalerie'
                 headLineContent = 'Besondere Fotogalerie';
                 picPath = this.specialPicPath;
                 break;
             case 'weddingPicArray':
                 imgIdString = 'wedding-galerie';
+                imgAltContent = 'Bild in der Hochzeit`s Fotogalerie'
                 headLineContent = 'Hochzeits Galerie';
                 picPath = this.weddingPicPath;
                 break;
             case 'eventsPicArray':
                 imgIdString = 'event-galerie';
+                imgAltContent = 'Bild in der Event Fotogalerie'
                 headLineContent = 'Event Galerie';
                 picPath = this.eventsPicPath;
                 break;
             case 'shootingPicArray':
                 imgIdString = 'shooting-galerie';
+                imgAltContent = 'Bild in der Shooting Fotogalerie'
                 headLineContent = 'Fotoshooting Galerie';
                 picPath = this.shootingPicPath;
                 break;
         }
         this.buildHtmlContent(imgIdString, headLineContent);
-        this.insertImages(arrId, imgIdString, picPath);
+        this.insertImages(arrId, imgIdString, picPath, imgAltContent);
     }
 
     /**
@@ -160,7 +165,7 @@ export default class PictureGallery {
      * @param {string} path enthält den Pfad zum Bild
      */
 
-    insertImages(arrKey, conId, path) {
+    insertImages(arrKey, conId, path, altContent) {
         const container = document.getElementById(conId);
 
         for (let i = 0; i < this.picObject[arrKey].length; i++) {
@@ -175,6 +180,7 @@ export default class PictureGallery {
             imageElement.setAttribute('class', 'clickable-image');
             imageElement.setAttribute(`id`, `${arrKey + `-` + i}`);
             imageElement.src = imageSrc;
+            imageElement.setAttribute('alt', altContent);
             imageElement.loading = 'lazy';
             anchorElement.appendChild(imageElement);
 
