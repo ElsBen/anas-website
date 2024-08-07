@@ -116,19 +116,19 @@ export default class GalleryView {
 
         switch (unvalidArrName){
             case 'specialPicArray':
-                validArrName = this.pictureArrays.bilderObjekt.specialPicArray;
+                validArrName = this.pictureArrays.picObject.specialPicArray;
                 this.dirPath = this.pictureArrays.specialPicPath;
                 break;
             case 'weddingPicArray':
-                validArrName = this.pictureArrays.bilderObjekt.weddingPicArray;
+                validArrName = this.pictureArrays.picObject.weddingPicArray;
                 this.dirPath = this.pictureArrays.weddingPicPath;
                 break;
             case 'eventsPicArray':
-                validArrName = this.pictureArrays.bilderObjekt.eventsPicArray;
+                validArrName = this.pictureArrays.picObject.eventsPicArray;
                 this.dirPath = this.pictureArrays.eventsPicPath;
                 break;
             case 'shootingPicArray':
-                validArrName = this.pictureArrays.bilderObjekt.shootingPicArray;
+                validArrName = this.pictureArrays.picObject.shootingPicArray;
                 this.dirPath = this.pictureArrays.shootingPicPath;
                 break;
         }

@@ -38,7 +38,7 @@ export default class FormData {
             this.userInputSendBtn = document.querySelector(
                 '.user-input-sended-btn'
             );
-        } else {console.log('Formular nicht vorhanden')}
+        } else {console.log('Form does not exist!')}
        
     }
 

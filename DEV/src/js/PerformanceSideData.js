@@ -7,7 +7,7 @@ export default class PerformanceSideData {
      */
 
     constructor() {
-        this.formData = document.querySelectorAll('input');
+        this.checkBoxes = document.querySelectorAll('input');
         this.performanceBtn = document.getElementsByClassName(
             'select-power-box-btn',
         );
@@ -23,7 +23,7 @@ export default class PerformanceSideData {
     checkInfo() {
         Array.from(this.performanceBtn).forEach((button) => {
             button.addEventListener('click', () => {
-                this.formData.forEach((inp) => {
+                this.checkBoxes.forEach((inp) => {
                     let checkedValue = inp.checked;
                     if (checkedValue) {
                         this.validateUserSelection(inp.id);
@@ -50,7 +50,7 @@ export default class PerformanceSideData {
             case 'basic-event':
                 this.selection = 'Basic Event';
                 break;
-            case 'basic-particularly':
+            case 'basic-special':
                 this.selection = 'Basic Besondere Anlässe';
                 break;
             case 'premium-shooting':
@@ -59,7 +59,7 @@ export default class PerformanceSideData {
             case 'premium-event':
                 this.selection = 'Premium Event';
                 break;
-            case 'premium-particularly':
+            case 'premium-special':
                 this.selection = 'Premium Besondere Anlässe';
                 break;
             case 'exclusive-shooting':
@@ -68,7 +68,7 @@ export default class PerformanceSideData {
             case 'exclusive-event':
                 this.selection = 'Exklusiv Event';
                 break;
-            case 'exclusive-particularly':
+            case 'exclusive-special':
                 this.selection = 'Exklusiv Besondere Anlässe';
                 break;
             default:

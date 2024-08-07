@@ -13,7 +13,7 @@ export default class PictureGallery {
          * welche Dateipfade zu den einzelnen Bildern
          * der jeweiligen Bildergalerien enthält.
          */
-        this.bilderObjekt = {
+        this.picObject = {
             specialPicArray: [
                 "special001.jpg",
                 "special002.jpg",
@@ -78,15 +78,15 @@ export default class PictureGallery {
 
     /**
      *Die iteratePicObject-Funktion hält in einer Konstanten die Schlüssel des Objektes (Namen der Arrays).
-     *Mit der For-Of-Schleife wird über die Werte des bilderObjekt`s (Key`s der einzelnen Array`s) iteriert und
+     *Mit der For-Of-Schleife wird über die Werte des picObject`s (Key`s der einzelnen Array`s) iteriert und
      *in einer Konstanten gehalten, diese Konstante wird an die nächste Funktion als Parameter übergeben.
      *@param {*enthält den Array-Schlüssel des gerade iterierten Wertes im Objekt}
      */
     iteratePicObject() {
-        const eigenschaften = Object.keys(this.bilderObjekt);
+        const picObjectProps = Object.keys(this.picObject);
 
-        for (const eigenschaft of eigenschaften) {
-            const objProp = eigenschaft;
+        for (const property of picObjectProps) {
+            const objProp = property;
             this.processArrKeyInHtmlCompatContent(objProp);
         }
     }
@@ -163,8 +163,8 @@ export default class PictureGallery {
     insertImages(arrKey, conId, path) {
         const container = document.getElementById(conId);
 
-        for (let i = 0; i < this.bilderObjekt[arrKey].length; i++) {
-            const imageName = this.bilderObjekt[arrKey][i];
+        for (let i = 0; i < this.picObject[arrKey].length; i++) {
+            const imageName = this.picObject[arrKey][i];
             const imageSrc = path + this.forThumbnails + imageName;
             
 
