@@ -258,7 +258,7 @@ body {
 }
 
 #background-image {
-    background-image: url('../img/logo_transparent.png');
+    background-image: url('../img/logo_transparent.avif');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -475,6 +475,11 @@ body {
     border: var(--border-line-thickness-1) solid var(--highlight-color);
 }
 
+.about-me-container .row {
+    display: flex;
+    align-items: center;
+}
+
 .about-me-container .col-2 {
     padding: var(--spacing-zero);
 }
@@ -492,6 +497,7 @@ body {
 .about-me-container .col-4 > .about-me-text {
     width: var(--responsive-spacing-21);
     text-align: center;
+    vertical-align: middle;
     padding: var(--spacing-zero) var(--spacing-md-2) var(--spacing-zero);
 }
 
@@ -516,14 +522,6 @@ body {
     padding: var(--spacing-sm-1) var(--spacing-sm-1) var(--special-spacing-sm-6) var(--spacing-sm-1);
     object-fit: cover;
     object-position: var(--spacing-zero) var(--spacing-zero);
-}
-
-.about-me-container > .row > .col-4 {
-    display: inline-block;
-}
-
-.about-me-container > .row > .col-2 {
-    display: inline-block;
 }
 
 @media (max-width: 1345px) {
@@ -1200,7 +1198,7 @@ body {
 /* ### KONTAKTFORMULAR ### */
 
 #background-image-kontakt {
-    background-image: url(../img/briefkasten.jpg);
+    background-image: url(../img/briefkasten.avif);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
