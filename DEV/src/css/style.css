@@ -585,7 +585,6 @@ body {
 
 @media (max-width: 770px) {
     .about-me-container > .row > .col-4 {
-        display: inline-block;
         width: var(--responsive-spacing-21);
         margin-bottom: var(--standard-spacing-sm);
     }
@@ -598,10 +597,9 @@ body {
         display: inline-block;
         float: right;
         height: auto;
-        width: var(--responsive-spacing-5);
+        width: var(--responsive-spacing-4);
         margin: var(--special-spacing-md-4) var(--spacing-zero) var(--special-spacing-sm-3) var(--spacing-sm-1);
         object-fit: cover;
-        object-position: var(--spacing-zero) var(--spacing-zero);
     }
 
     .about-me-container .col-4 > .about-me-text > p {
@@ -1279,8 +1277,6 @@ form > div > .no-resize {
     color: var(--font-color);
 }
 
-/* Diesen Teil unten in die allgemeinen Button stylings einfügen und universel machen */
-
 .form-btn:link {
     color: var(--highlight-color);
 }
@@ -1329,7 +1325,7 @@ form > div > .no-resize {
     padding-bottom: var(--standard-spacing-sm);
 }
 
-@media(max-width: 480px){
+@media(max-width: 600px){
     #transparent-background-image {
         width: var(--responsive-spacing-21);
         margin-left: var(--spacing-zero);
