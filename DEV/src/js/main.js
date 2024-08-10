@@ -7,8 +7,12 @@ import FormData from './FormData.js';
 import PerformanceSideData from './PerformanceSideData.js';
 
 // Logik für die Backgroundimage Scrollanimation
+document.addEventListener('wheel',(e) => {
+    const backgroundAnimation = new ScrollBackground();
+    backgroundAnimation.start(e);
+});
 
-document.addEventListener('wheel', function (e) {
+document.addEventListener('touchstart', (e) => {
     const backgroundAnimation = new ScrollBackground();
     backgroundAnimation.start(e);
 });
@@ -19,7 +23,7 @@ document.addEventListener('wheel', function (e) {
  * Mit diesem Eventlistener wird abgewartet damit das DOM vollständig geladen wird,
  * bevor die Logik für die Galerie ausgeführt wird.
  */
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const picGalerieStart = new PictureGallery();
     picGalerieStart.htmlContentCheck();
 
@@ -38,4 +42,4 @@ const performanceSide = new PerformanceSideData();
 performanceSide.checkInfo();
 
 // Einige Geräte brauchen den unten stehenden Code, damit auf die touch-Befehle reagiert werden kann.
-document.addEventListener('touchstart', function () {}, true);
+document.addEventListener('touchstart',() => {}, true);
