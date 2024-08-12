@@ -3,13 +3,11 @@ export default class ScrollBackground {
         this.backgroundImage = document.getElementById('background-image');
     }
     
-    // Funktion für die Scrollanimation des Hintergrundes.
-    // Errechnet anhand des Scrollevents wohin sich der Background bewegen soll.
-    // Für das responsive Verhalten wurden hier die einzelnen Fenstergrößen mit anderen Pixelwerten berechnet. 
+    // Filtert das ausgelöste Event (wheel / touch).
+    // Damit startPositionChange() für beide Events verwendet werden kann.
     start(event) {
         if (this.backgroundImage) {
             let deltaY = 0;
-
             if (event.type === 'wheel'){ 
                 deltaY = event.deltaY;
                 this.startPositionChange(deltaY);
@@ -27,13 +25,16 @@ export default class ScrollBackground {
         }
     }
 
+    // Funktion für die Scrollanimation des Hintergrundes.
+    // Errechnet anhand des Scrollevents wohin sich der Background bewegen soll.
+    // Für das responsive Verhalten wurden hier die einzelnen Fenstergrößen mit anderen Pixelwerten berechnet. 
     startPositionChange(scrollPos){
         let deltaY = scrollPos;
         const screenWidth = window.innerWidth;
 
         if (screenWidth > 1100) {
             this.backgroundImage.style.backgroundPosition =
-                deltaY > 0 ? 'center -550px' : 'center 0';
+                deltaY > 0 ? 'center -650px' : 'center 0';
         } else if (screenWidth > 790) {
             this.backgroundImage.style.backgroundPosition =
                 deltaY > 0 ? 'center -400px' : 'center 0';
