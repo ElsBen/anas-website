@@ -94,8 +94,8 @@ export default class PerformanceSideData {
      */
     iterateSubmitBtn(){
         Array.from(this.submitButton).forEach(e => {
-            e.addEventListener('click', function() {
-                window.location.href = '../../kontakt.html';
+            e.addEventListener('click', ()=> {
+                e.setAttribute('href', './kontakt.html');
             });
         })
     };
