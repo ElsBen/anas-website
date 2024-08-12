@@ -79,8 +79,6 @@
     --spacing-lg-1: 4rem;
     --spacing-lg-2: 5rem;
     --spacing-lg-3: 6rem;
-    --spacing-lg-4: 6.25rem;
-    --spacing-lg-5: 7.5rem;
     --spacing-lg-6: 8.5rem;
    
     --special-spacing-sm: -40px;
@@ -818,10 +816,7 @@ body {
     width: var(--responsive-spacing-14);
     height: var(--responsive-spacing-21);
     background-color: var(--main-transparent-color);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: var(--spacing-lg-3);
-    margin-bottom: var(--spacing-lg-3);
+    margin: var(--spacing-lg-3) auto var(--spacing-lg-6) auto;
     padding: var(--standard-spacing-sm);
     border: var(--border-line-thickness-1) solid var(--highlight-color);
     opacity: 0.95;
@@ -921,6 +916,11 @@ body {
 }
 
 /* ### LEISTUNGS-BOXEN ### */
+
+#performance-boxes-area{
+    margin-top: var(--spacing-lg-6);
+    margin-bottom: var(--spacing-lg-6);
+}
 
 #performance-boxes-area > .performance-boxes {
     width: var(--responsive-spacing-18);
@@ -1093,7 +1093,7 @@ body {
 /* ### BILDERGALERIE ### */
 
 #gallery-area {
-    margin: var(--spacing-lg-3) var(--spacing-zero) var(--spacing-lg-3) var(--spacing-zero);
+    margin: var(--special-spacing-md-7) var(--spacing-zero) var(--spacing-lg-3) var(--spacing-zero);
     display: inline-block;
     width: var(--responsive-spacing-21);
     height: var(--responsive-spacing-21);
@@ -1230,6 +1230,7 @@ body {
     margin-left: var(--responsive-spacing-2);
     margin-right: var(--responsive-spacing-2);
     margin-top: var(--spacing-md-2);
+    margin: var(--spacing-lg-6) var(--responsive-spacing-2) var(--spacing-lg-6) var(--responsive-spacing-2);
     background-color: var(--container-transparent-color-1);
 }
 
