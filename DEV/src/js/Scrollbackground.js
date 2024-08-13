@@ -31,19 +31,14 @@ export default class ScrollBackground {
     startPositionChange(scrollPos){
         let deltaY = scrollPos;
         const screenWidth = window.innerWidth;
-
+        
         if (screenWidth > 1100) {
             this.backgroundImage.style.backgroundPosition =
-                deltaY > 0 ? 'center -650px' : 'center 0';
-        } else if (screenWidth > 790) {
+                deltaY > 0 ? 'center -250px' : 'center 250px';
+        } else if (screenWidth < 650) {
             this.backgroundImage.style.backgroundPosition =
-                deltaY > 0 ? 'center -400px' : 'center 0';
-        } else if (screenWidth > 480) {
-            this.backgroundImage.style.backgroundPosition =
-                deltaY > 0 ? 'center -250px' : 'center 150px';
-        } else if (screenWidth > 320){
-            this.backgroundImage.style.backgroundPosition =
-                deltaY > 0 ? 'center -150px' : 'center 250px';
+                deltaY > 0 ? 'center -100px' : 'center 450px';
         }
+
     }
 }

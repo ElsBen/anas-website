@@ -256,12 +256,13 @@ body {
 }
 
 #background-image {
-    background-image: url('../img/logo_transparent.avif');
+    background-image: url('../img/logo_transparent_1.avif');
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: var(--spacing-zero) var(--spacing-zero);
-    transition: 1s ease-in-out;
+    background-size: contain;
+    min-height: 100vh;
+    background-position: center 250px;
+    transition: 1.3s ease-in-out;
 }
 
 @media (max-width: 720px){
