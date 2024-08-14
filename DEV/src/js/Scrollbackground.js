@@ -24,12 +24,11 @@ export default class ScrollBackground {
                     deltaY = this.lastDeltaY + scrollDirection;
                     this.lastDeltaY = deltaY;
                 }
-                
+
                 document.addEventListener('touchmove', onTouchMove);
                 document.addEventListener('touchend', ()=>{
                     this.startPositionChange(deltaY, run);
                 });
-           
             }        
         }
     }
