@@ -106,6 +106,7 @@
     --special-spacing-lg-8: 340px;
     --special-spacing-lg-9: 350px;
     --special-spacing-lg-10: 435px;
+    --special-spacing-lg-11: 450px;
 }
 
 /* ### FONTS ### */
@@ -261,13 +262,13 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     min-height: 100vh;
-    background-position: center 250px;
+    background-position: center var(--special-spacing-lg-5);
     transition: 1.3s ease-in-out;
 }
 
-@media (max-width: 720px){
+@media (max-width: 650px){
     #background-image {
-        background-position: center;
+        background-position: center var(--special-spacing-lg-11);
     }
 }
 

@@ -1,26 +1,35 @@
 export default class ScrollBackground {
     constructor() {
         this.backgroundImage = document.getElementById('background-image');
+        this.lastDeltaY = 0;
     }
     
     // Filtert das ausgelöste Event (wheel / touch).
     // Damit startPositionChange() für beide Events verwendet werden kann.
-    start(event) {
+    start(event, run) {
         if (this.backgroundImage) {
             let deltaY = 0;
+
             if (event.type === 'wheel'){ 
                 deltaY = event.deltaY;
                 this.startPositionChange(deltaY);
             } else if (event.type === 'touchstart'){
-                let touchStart = 0;
-                touchStart = event.touches[0].clientY;
+                
+                let touchStart = event.touches[0].clientY;
 
-                document.addEventListener('touchmove', (e) => {
+                const onTouchMove = (e)=>{
+                    run = true;
                     let touchEnd = e.touches[0].clientY;
                     let scrollDirection = touchStart - touchEnd;
-                    deltaY = scrollDirection;
-                    this.startPositionChange(deltaY);
-                })
+                    deltaY = this.lastDeltaY + scrollDirection;
+                    this.lastDeltaY = deltaY;
+                }
+                
+                document.addEventListener('touchmove', onTouchMove);
+                document.addEventListener('touchend', ()=>{
+                    this.startPositionChange(deltaY, run);
+                });
+           
             }        
         }
     }
@@ -28,17 +37,18 @@ export default class ScrollBackground {
     // Funktion für die Scrollanimation des Hintergrundes.
     // Errechnet anhand des Scrollevents wohin sich der Background bewegen soll.
     // Für das responsive Verhalten wurden hier die einzelnen Fenstergrößen mit anderen Pixelwerten berechnet. 
-    startPositionChange(scrollPos){
+    startPositionChange(scrollPos, run){
         let deltaY = scrollPos;
         const screenWidth = window.innerWidth;
         
         if (screenWidth > 1100) {
             this.backgroundImage.style.backgroundPosition =
-                deltaY > 0 ? 'center -250px' : 'center 250px';
-        } else if (screenWidth < 650) {
+                deltaY > 0 ? 'center -250px' : 'center 270px';
+        } else if (screenWidth < 1100) {
             this.backgroundImage.style.backgroundPosition =
-                deltaY > 0 ? 'center -100px' : 'center 450px';
+                deltaY > 0 ? 'center -50px' : 'center 450px';
         }
 
+        run = false;
     }
 }

@@ -7,15 +7,20 @@ import FormData from './FormData.js';
 import PerformanceSideData from './PerformanceSideData.js';
 
 // Logik für die Backgroundimage Scrollanimation
+let runState = false;
+
 document.addEventListener('wheel',(e) => {
     const backgroundAnimation = new ScrollBackground();
     backgroundAnimation.start(e);
 });
 
-document.addEventListener('touchstart', (e) => {
-    const backgroundAnimation = new ScrollBackground();
-    backgroundAnimation.start(e);
-});
+if(!runState){
+    document.addEventListener('touchstart', (e) => {
+        const backgroundAnimation = new ScrollBackground();
+        backgroundAnimation.start(e, runState);
+    });
+};
+
 
 // PICTURE-GALLERY
 
@@ -42,4 +47,4 @@ const performanceSide = new PerformanceSideData();
 performanceSide.checkInfo();
 
 // Einige Geräte brauchen den unten stehenden Code, damit auf die touch-Befehle reagiert werden kann.
-document.addEventListener('touchstart',() => {}, true);
+// document.addEventListener('touchstart',() => {}, true);
