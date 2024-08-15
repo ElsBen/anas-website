@@ -1264,7 +1264,7 @@ form > div > .input-fields {
     font-weight: bold;
     box-shadow: var(--box-shadow-style-3);
     width: var(--responsive-spacing-11);
-    outline:var(--border-line-thickness) solid var(--highlight-color);
+    outline: var(--border-line-thickness) solid var(--highlight-color);
 }
 
 form > div > textarea {
@@ -1326,6 +1326,7 @@ form > div > .no-resize {
 
 .sended-user-input {
     width: var(--responsive-spacing-5);
+    min-width: var(--special-spacing-lg-6);
     height: max-content;
     padding: var(--standard-spacing-sm) var(--standard-spacing-sm) var(--spacing-md-2) var(--standard-spacing-sm);
     color: var(--main-color);
