@@ -90,12 +90,13 @@ export default class FormData {
      * @param {array} checkInquiry Werte aus dem localstorage die im Array gehalten werden
      */
     checkEntriesValid(checkEntries, checkInquiry) {
+
         if (checkEntries.email.match(this.validEmail) && this.form) {
             this.userEntries.push(checkEntries);
             this.form.reset();
             this.saveUserEntries(checkEntries, checkInquiry);
         } else {
-            this.buildUnsuccessfullSendWindowContent();
+            this.validatAndBuildSendStateWindow(false);
         }
     }
 
@@ -131,28 +132,43 @@ export default class FormData {
         });
         
         this.userEntries[0].push(performanceSelection);
-        this.buildSuccessfullSendWindowContent();
+        this.validatAndBuildSendStateWindow(true);
     }
 
     /**
      * Bei erfolgreichem absenden (oder nicht erfolgreich) 
      * wird hier der entsprechende Text und die Farbe gesetzt.
      */
-    buildSuccessfullSendWindowContent() {
-        this.headlineInputSend.textContent = 'Erfolgreich abgesendet!';
-        this.paragraphInputSend.textContent = `Vielen Dank für ihr Vertrauen. Wir haben Ihre Anfrage
-        erhalten und werden uns schnellst möglich darum kümmern.`;
-        this.headlineInputSend.style.color = this.colorSuccess;
-        this.paragraphInputSend.style.color = this.colorSuccess;
-        this.openUserInputSendWindow();
+
+    validatAndBuildSendStateWindow(state){
+        let headline;
+        let content;
+        let color;
+
+        switch(state){
+            case true:
+                headline = 'Erfolgreich abgesendet!';
+                content = `Vielen Dank für ihr Vertrauen. Wir haben Ihre Anfrage erhalten und werden uns schnellst möglich darum kümmern.`;
+                color = this.colorSuccess;
+                this.buildUserInformationWindow(headline, content, color);
+                break;
+
+            case false:
+                headline = 'Upps, da ist was schief gelaufen. Versuchen sie es noch einmal!';
+                content = `Die von Ihnen eingegebene Email Adresse entspricht nicht dem gängigen Format für Email Adressen`;
+                color = this.colorAlert;
+                this.buildUserInformationWindow(headline, content, color); 
+                break;
+
+        }
     }
 
-    buildUnsuccessfullSendWindowContent() {
-        this.headlineInputSend.textContent =
-            'Upps, da ist was schief gelaufen. Versuchen sie es noch einmal!';
-        this.paragraphInputSend.textContent = `Die von Ihnen eingegebene Email Adresse entspricht nicht dem gängigen Format für Email Adressen`;
-        this.headlineInputSend.style.color = this.colorAlert;
-        this.paragraphInputSend.style.color = this.colorAlert;
+    buildUserInformationWindow(headline, content, color){
+        this.headlineInputSend.textContent = headline;
+        this.paragraphInputSend.textContent = content;
+        this.userInputSendBtn.textContent = 'Neuer Text';
+        this.headlineInputSend.style.color = color;
+        this.paragraphInputSend.style.color = color;
         this.openUserInputSendWindow();
     }
 
