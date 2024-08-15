@@ -1289,14 +1289,6 @@ form > div > .no-resize {
     cursor: pointer;
 }
 
-.sub-information {
-    margin-right: var(--standard-spacing-sm);
-    font-size: var(--font-size-standard);
-    width: max-content;
-    color: var(--main-color);
-    float: right;
-}
-
 ::placeholder {
     color: var(--font-color);
 }
