@@ -1095,7 +1095,7 @@ body {
 /* ### BILDERGALERIE ### */
 
 #gallery-area {
-    margin: var(--special-spacing-md-7) var(--spacing-zero) var(--spacing-lg-3) var(--spacing-zero);
+    margin: var(--spacing-zero) var(--spacing-zero) var(--spacing-lg-3) var(--spacing-zero);
     display: inline-block;
     width: var(--responsive-spacing-21);
     height: var(--responsive-spacing-21);
@@ -1103,7 +1103,7 @@ body {
 
 #gallery-area .style-img-container {
     display: flow-root;
-    margin-top: var(--spacing-lg-2);
+    margin-top: var(--special-spacing-lg-4);
     background-color: var(--main-more-transparent-color);
 }
 
@@ -1111,6 +1111,7 @@ body {
     padding: var(--spacing-md-2) var(--spacing-zero) var(--spacing-md-2) var(--special-spacing-md-7);
     font-size: var(--font-size-lg);
     color: var(--selection-color);
+    text-align: center;
 }
 
 #gallery-area a > img {
@@ -1151,6 +1152,8 @@ body {
 .gallery-element-container {
     max-width: max-content;
     max-height: max-content;
+    min-width: var(--special-spacing-lg-8);
+    min-height: var(--special-spacing-lg-4);
     position: relative;
 }
 
