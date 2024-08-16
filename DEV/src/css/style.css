@@ -1343,6 +1343,15 @@ form > div > .no-resize {
     padding-bottom: var(--standard-spacing-sm);
 }
 
+.user-inf-btn{
+    display: inline-block;
+}
+
+.hide-no-btn{
+    display: inline-block;
+    margin-left: var(--special-spacing-md-7);
+}
+
 @media(max-width: 1100px){
     #background-image-kontakt {
         background-position: center;

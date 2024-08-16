@@ -16,7 +16,6 @@ export default class FormData {
             JSON.parse(localStorage.getItem('savePerformanceSelection')) || [];
 
             localStorage.removeItem('savePerformanceSelection');
-            console.log(this.savedPerformanceSelection);
 
         this.validEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -72,7 +71,7 @@ export default class FormData {
                     message: formMessage,
                 };
                 
-                this.checkEntriesValid(saveEntries, this.savedInquiry);
+                this.checkEntriesValid(saveEntries);
             });
         }
 
@@ -89,15 +88,21 @@ export default class FormData {
      * @param {object} checkEntries enthält die Einträge aus den Input's
      * @param {array} checkInquiry Werte aus dem localstorage die im Array gehalten werden
      */
-    checkEntriesValid(checkEntries, checkInquiry) {
+    checkEntriesValid(checkEntries) {
 
         if (checkEntries.email.match(this.validEmail) && this.form) {
             this.userEntries.push(checkEntries);
             this.form.reset();
-            this.saveUserEntries(checkEntries, checkInquiry);
+            this.areTheEntriesCorrectWindow(checkEntries);
+            
         } else {
             this.validatAndBuildSendStateWindow(false);
         }
+    }
+
+    areTheEntriesCorrectWindow(entries){
+        console.log(entries);
+        this.saveUserEntries(entries);
     }
 
     /**
@@ -108,10 +113,10 @@ export default class FormData {
      * @param {object} saveEntries enthält die Einträge aus den Input's
      * @param {array} inquiry Werte aus dem localstorage die im Array gehalten werden
      */
-    saveUserEntries(saveEntries, inquiry) {
+    saveUserEntries(saveEntries) {
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
         this.userEntries = [];
-        this.userEntries.push(inquiry);
+        this.userEntries.push(this.savedInquiry);
         localStorage.removeItem('saveInquiry');
         this.getSavedPerformanceSelection()
     }
@@ -143,30 +148,33 @@ export default class FormData {
     validatAndBuildSendStateWindow(state){
         let headline;
         let content;
+        let btnContent;
         let color;
 
         switch(state){
             case true:
                 headline = 'Erfolgreich abgesendet!';
-                content = `Vielen Dank für ihr Vertrauen. Wir haben Ihre Anfrage erhalten und werden uns schnellst möglich darum kümmern.`;
+                content = 'Vielen Dank für ihr Vertrauen. Wir haben Ihre Anfrage erhalten und werden uns schnellst möglich darum kümmern.';
+                btnContent = 'Schließen';
                 color = this.colorSuccess;
-                this.buildUserInformationWindow(headline, content, color);
+                this.buildUserInformationWindow(headline, content, btnContent, color);
                 break;
 
             case false:
                 headline = 'Upps, da ist was schief gelaufen. Versuchen sie es noch einmal!';
-                content = `Die von Ihnen eingegebene Email Adresse entspricht nicht dem gängigen Format für Email Adressen`;
+                content = 'Die von Ihnen eingegebene Email Adresse entspricht nicht dem gängigen Format für Email Adressen';
+                btnContent = 'Schließen';
                 color = this.colorAlert;
-                this.buildUserInformationWindow(headline, content, color); 
+                this.buildUserInformationWindow(headline, content, btnContent, color); 
                 break;
 
         }
     }
 
-    buildUserInformationWindow(headline, content, color){
+    buildUserInformationWindow(headline, content, btnContent, color){
         this.headlineInputSend.textContent = headline;
         this.paragraphInputSend.textContent = content;
-        this.userInputSendBtn.textContent = 'Neuer Text';
+        this.userInputSendBtn.textContent = btnContent;
         this.headlineInputSend.style.color = color;
         this.paragraphInputSend.style.color = color;
         this.openUserInputSendWindow();
