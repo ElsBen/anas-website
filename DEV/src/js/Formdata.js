@@ -101,8 +101,17 @@ export default class FormData {
     }
 
     areTheEntriesCorrectWindow(entries){
-        console.log(entries);
-        this.saveUserEntries(entries);
+        // console.log('Das Einträge Objekt', entries);
+        const name = `Name: ${entries.name}`;
+        const lastName = `Nachname: ${entries.lastName}`;
+        const email = `Email: ${entries.email}`;
+        const telephone = `Telefon: ${entries.telephone}`;
+        const message = `Nachricht: ${entries.message}`;
+        const performanceSelection = `Ihre Auswahl: ${JSON.stringify(this.savedPerformanceSelection)}`
+        const formattedEntries = [name, lastName, email, telephone, message, performanceSelection];
+        // console.log(name, lastName, email, telephone, message, performanceSelection);
+        this.validatAndBuildSendStateWindow(formattedEntries, entries);
+        // this.saveUserEntries(entries);
     }
 
     /**
@@ -145,13 +154,19 @@ export default class FormData {
      * wird hier der entsprechende Text und die Farbe gesetzt.
      */
 
-    validatAndBuildSendStateWindow(state){
+    validatAndBuildSendStateWindow(state, entries){
         let headline;
         let content;
         let btnContent;
         let color;
-
+        let arrChecked;
+        if (Array.isArray(state)){
+            arrChecked = state;
+            state = 'Array';
+        }
+        console.log(state);
         switch(state){
+            
             case true:
                 headline = 'Erfolgreich abgesendet!';
                 content = 'Vielen Dank für ihr Vertrauen. Wir haben Ihre Anfrage erhalten und werden uns schnellst möglich darum kümmern.';
@@ -168,6 +183,15 @@ export default class FormData {
                 this.buildUserInformationWindow(headline, content, btnContent, color); 
                 break;
 
+            case 'Array':
+                headline = 'Sind Ihre Angaben richtig?';
+                content = JSON.stringify(arrChecked).split(",").join("\n");
+                btnContent = 'Ja';
+                color = this.colorSuccess;
+                this.saveUserEntries(entries);
+                this.buildUserInformationWindow(headline, content, btnContent, color);
+                break;
+                
         }
     }
 

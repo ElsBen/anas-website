@@ -1337,10 +1337,12 @@ form > div > .no-resize {
     background-color: var(--highlight-transparent-color);
     border-radius: var(--border-radius-md);
     border:var(--border-line-thickness) solid var(--main-color);
+    
 }
 
 .sended-user-input > p {
     padding-bottom: var(--standard-spacing-sm);
+    white-space: pre;
 }
 
 .user-inf-btn{
