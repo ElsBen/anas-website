@@ -76,9 +76,9 @@ export default class FormData {
         }
 
         //Wird am Schluss nicht mehr benötigt
-        setInterval(() => {
-            console.log(this.userEntries);
-        }, 10000);
+        // setInterval(() => {
+        //     console.log(this.userEntries);
+        // }, 10000);
     }
 
     /**
@@ -107,9 +107,9 @@ export default class FormData {
         const email = `Email: ${entries.email}`;
         const telephone = `Telefon: ${entries.telephone}`;
         const message = `Nachricht: ${entries.message}`;
-        console.log(message);
+        // console.log(message);
         const performanceSelection = ` Auswahl: ${JSON.stringify(this.savedPerformanceSelection).replace(/,/g, ', ')}`;
-        console.log(performanceSelection);
+        // console.log(performanceSelection);
         const formattedEntries = [name, lastName, email, telephone, message, performanceSelection];
      
         this.validatAndBuildSendStateWindow(formattedEntries, entries);
@@ -197,7 +197,7 @@ export default class FormData {
                 
                 content = content.replace(/["\\\[\]]/g, '');
                 content = content.split(/, Auswahl:/g).join('\n\nAuswahl:\n')
-                console.log(content);
+                // console.log(content);
                 content = content.replace(/Nachricht:/g, '\nNachricht:\n');
                 content = content.replace(/(.{31})/g, '$1-\n');
                 btnContent = 'Ja';
@@ -230,7 +230,8 @@ export default class FormData {
      * Fenster wird wieder durch Button-Klick wieder geschloßen.
      */
     closeUserInputSendWindow() {
-        this.userInputSendBtn.addEventListener('click', () => {
+        this.userInputSendBtn.addEventListener('click', (e) => {
+            console.log(e.target.innerHTML);// Das ist der Schlüssel um hier mit einer Anweisung die Buttons auszuwerten und den weiteren Programmverlauf zu setzen.
             this.userInputSend.style.display = 'none';
         });
     }
