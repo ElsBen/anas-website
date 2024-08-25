@@ -101,17 +101,19 @@ export default class FormData {
     }
 
     areTheEntriesCorrectWindow(entries){
-        // console.log('Das Einträge Objekt', entries);
+        
         const name = `Name: ${entries.name}`;
         const lastName = `Nachname: ${entries.lastName}`;
         const email = `Email: ${entries.email}`;
         const telephone = `Telefon: ${entries.telephone}`;
         const message = `Nachricht: ${entries.message}`;
-        const performanceSelection = `Ihre Auswahl: ${JSON.stringify(this.savedPerformanceSelection)}`
+        console.log(message);
+        const performanceSelection = ` Auswahl: ${JSON.stringify(this.savedPerformanceSelection).replace(/,/g, ', ')}`;
+        console.log(performanceSelection);
         const formattedEntries = [name, lastName, email, telephone, message, performanceSelection];
-        // console.log(name, lastName, email, telephone, message, performanceSelection);
+     
         this.validatAndBuildSendStateWindow(formattedEntries, entries);
-        // this.saveUserEntries(entries);
+      
     }
 
     /**
@@ -185,7 +187,19 @@ export default class FormData {
 
             case 'Array':
                 headline = 'Sind Ihre Angaben richtig?';
-                content = JSON.stringify(arrChecked).split(",").join("\n");
+                let counter = 0;
+
+                
+                content = JSON.stringify(arrChecked).replace(/,/g, match =>{
+                    counter++
+                    return (counter <= 4) ? '\n' : match;
+                });
+                
+                content = content.replace(/["\\\[\]]/g, '');
+                content = content.split(/, Auswahl:/g).join('\n\nAuswahl:\n')
+                console.log(content);
+                content = content.replace(/Nachricht:/g, '\nNachricht:\n');
+                content = content.replace(/(.{31})/g, '$1-\n');
                 btnContent = 'Ja';
                 color = this.colorSuccess;
                 this.saveUserEntries(entries);
