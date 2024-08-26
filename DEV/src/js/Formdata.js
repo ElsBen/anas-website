@@ -182,7 +182,6 @@ export default class FormData {
      * Bei erfolgreichem absenden (oder nicht erfolgreich) 
      * wird hier der entsprechende Text und die Farbe gesetzt.
      */
-
     validatAndBuildSendStateWindow(state, entries){
         let headline;
         let content;
@@ -260,5 +259,4 @@ export default class FormData {
     openUserInputSendWindow() {
         this.userInputSend.style.display = 'flex';
     }
-
 }
