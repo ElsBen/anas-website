@@ -43,9 +43,7 @@ export default class FormData {
                     this.userInputCancelBtn.style.display = 'none';
                     this.validatAndBuildSendStateWindow(false);
                 } else if (e.target.innerHTML.match('Schließen')){
-                    console.log(this.userEntries);
                     this.userInputSend.style.display = 'none';
-                    console.log(this.userEntries);
                 }
             });
         }, 2000)
@@ -119,9 +117,7 @@ export default class FormData {
     checkEntriesValid(checkEntries) {
 
         if (checkEntries.email.match(this.validEmail) && this.form) {
-            // this.userEntries.push(checkEntries);
-            this.areTheEntriesCorrectWindow(checkEntries);
-            
+            this.areTheEntriesCorrectWindow(checkEntries);          
         } else {
             this.userInputCancelBtn.style.display = 'none';
             this.validatAndBuildSendStateWindow('mail-unvalid');
