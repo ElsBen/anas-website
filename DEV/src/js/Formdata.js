@@ -2,6 +2,7 @@ export default class FormData {
     
     constructor() {
         this.form = document.querySelector('#form');
+        this.saveEntr;
         this.userEntries = [];
         this.userSelections = [];
         
@@ -24,6 +25,31 @@ export default class FormData {
         );
 
         this.userInputSendContent = document.querySelector('.sended-user-input');
+
+        /**
+         * Wird verzögert aufgerufen damit es keinen Fehler beim Laden des Form-Modules aus 
+         * dem Perfomance-Modul heraus gibt. 
+         * Öffnet durch Button-Klick Eingaben richtig Fenster, Eingabe falsch Fenster oder Eingabe erfolgreich Fenster.
+         */
+        setTimeout(()=>{
+            this.userInputSendContent.addEventListener('click', (e) => {
+                
+                if (e.target.innerHTML.match('Ja')){
+                    setTimeout(()=>{
+                        this.userInputCancelBtn.style.display = 'none';
+                        this.saveUserEntries(this.saveEntr);
+                    }, 1000)
+                } else if (e.target.innerHTML.match('Nein')){
+                    this.userInputCancelBtn.style.display = 'none';
+                    this.validatAndBuildSendStateWindow(false);
+                } else if (e.target.innerHTML.match('Schließen')){
+                    console.log(this.userEntries);
+                    this.userInputSend.style.display = 'none';
+                    console.log(this.userEntries);
+                }
+            });
+        }, 2000)
+        
         
         /**
          * Stellt sicher das dass Formular vorhanden ist und hält die 
@@ -37,6 +63,7 @@ export default class FormData {
             this.userInputSendBtn = document.querySelector(
                 '.user-input-sended-btn'
             );
+            this.userInputCancelBtn = document.querySelector('.hide-no-btn');
         } else {console.log('Form does not exist!')}
        
     }
@@ -70,15 +97,16 @@ export default class FormData {
                     telephone: formTelNumber,
                     message: formMessage,
                 };
-                
+
+                this.userInputCancelBtn.style.display = 'inline-block';
                 this.checkEntriesValid(saveEntries);
             });
         }
 
-        //Wird am Schluss nicht mehr benötigt
-        // setInterval(() => {
-        //     console.log(this.userEntries);
-        // }, 10000);
+        // Wird am Schluss nicht mehr benötigt
+        setInterval(() => {
+            console.log(this.userEntries);
+        }, 10000);
     }
 
     /**
@@ -91,12 +119,12 @@ export default class FormData {
     checkEntriesValid(checkEntries) {
 
         if (checkEntries.email.match(this.validEmail) && this.form) {
-            this.userEntries.push(checkEntries);
-            this.form.reset();
+            // this.userEntries.push(checkEntries);
             this.areTheEntriesCorrectWindow(checkEntries);
             
         } else {
-            this.validatAndBuildSendStateWindow(false);
+            this.userInputCancelBtn.style.display = 'none';
+            this.validatAndBuildSendStateWindow('mail-unvalid');
         }
     }
 
@@ -107,13 +135,10 @@ export default class FormData {
         const email = `Email: ${entries.email}`;
         const telephone = `Telefon: ${entries.telephone}`;
         const message = `Nachricht: ${entries.message}`;
-        // console.log(message);
         const performanceSelection = ` Auswahl: ${JSON.stringify(this.savedPerformanceSelection).replace(/,/g, ', ')}`;
-        // console.log(performanceSelection);
         const formattedEntries = [name, lastName, email, telephone, message, performanceSelection];
      
         this.validatAndBuildSendStateWindow(formattedEntries, entries);
-      
     }
 
     /**
@@ -125,10 +150,12 @@ export default class FormData {
      * @param {array} inquiry Werte aus dem localstorage die im Array gehalten werden
      */
     saveUserEntries(saveEntries) {
+        this.userEntries.push(saveEntries);
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
         this.userEntries = [];
         this.userEntries.push(this.savedInquiry);
         localStorage.removeItem('saveInquiry');
+        this.form.reset();
         this.getSavedPerformanceSelection()
     }
     
@@ -162,11 +189,12 @@ export default class FormData {
         let btnContent;
         let color;
         let arrChecked;
+
         if (Array.isArray(state)){
             arrChecked = state;
             state = 'Array';
         }
-        console.log(state);
+        
         switch(state){
             
             case true:
@@ -177,7 +205,7 @@ export default class FormData {
                 this.buildUserInformationWindow(headline, content, btnContent, color);
                 break;
 
-            case false:
+            case 'mail-unvalid':
                 headline = 'Upps, da ist was schief gelaufen. Versuchen sie es noch einmal!';
                 content = 'Die von Ihnen eingegebene Email Adresse entspricht nicht dem gängigen Format für Email Adressen';
                 btnContent = 'Schließen';
@@ -197,15 +225,21 @@ export default class FormData {
                 
                 content = content.replace(/["\\\[\]]/g, '');
                 content = content.split(/, Auswahl:/g).join('\n\nAuswahl:\n')
-                // console.log(content);
                 content = content.replace(/Nachricht:/g, '\nNachricht:\n');
                 content = content.replace(/(.{31})/g, '$1-\n');
                 btnContent = 'Ja';
                 color = this.colorSuccess;
-                this.saveUserEntries(entries);
+                this.saveEntr = entries;
                 this.buildUserInformationWindow(headline, content, btnContent, color);
+                break; 
+
+            case false:
+                headline = 'Upps, da ist was schief gelaufen. Versuchen sie es noch einmal!';
+                content = 'Klicken Sie auf Schließen und korrigieren Sie den falschen Eintrag.';
+                btnContent = 'Schließen';
+                color = this.colorAlert;
+                this.buildUserInformationWindow(headline, content, btnContent, color); 
                 break;
-                
         }
     }
 
@@ -213,26 +247,18 @@ export default class FormData {
         this.headlineInputSend.textContent = headline;
         this.paragraphInputSend.textContent = content;
         this.userInputSendBtn.textContent = btnContent;
+        this.userInputSendBtn.style.color = color;
         this.headlineInputSend.style.color = color;
         this.paragraphInputSend.style.color = color;
+        
         this.openUserInputSendWindow();
     }
 
     /**
-     * Fenster für den Statusbericht des Form wird sichtbar gemacht.
+     * Fenster für die User Info des Form wird sichtbar gemacht.
      */
     openUserInputSendWindow() {
         this.userInputSend.style.display = 'flex';
-        this.closeUserInputSendWindow();
     }
 
-    /**
-     * Fenster wird wieder durch Button-Klick wieder geschloßen.
-     */
-    closeUserInputSendWindow() {
-        this.userInputSendBtn.addEventListener('click', (e) => {
-            console.log(e.target.innerHTML);// Das ist der Schlüssel um hier mit einer Anweisung die Buttons auszuwerten und den weiteren Programmverlauf zu setzen.
-            this.userInputSend.style.display = 'none';
-        });
-    }
 }
