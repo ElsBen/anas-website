@@ -8,11 +8,7 @@ export default class PictureGallery {
 
         this.forThumbnails = 'thumbnails/';
 
-        /**
-         * Ein Bilder-Objekt mit vier Arrays,
-         * welche Dateipfade zu den einzelnen Bildern
-         * der jeweiligen Bildergalerien enthält.
-         */
+    
         this.picObject = {
             specialPicArray: [
                 "special001.avif",
@@ -66,21 +62,14 @@ export default class PictureGallery {
         this.checkGalerieSide = document.querySelector('#gallery-area');
     }
 
-    /**
-     * Die htmlContentCheck-Funktion erhält in einer Anweisung den Galerie-Bereich und prüft diesen auf Existenz (true/false),
-     * wenn der Bereich existiert, wird die nächste Funktion aufgerufen.
-     */
+
     htmlContentCheck() {
         if (this.checkGalerieSide) {
             this.iteratePicObject();
         }
     }
 
-    /**
-     *Die iteratePicObject-Funktion hält in einer Konstante die Schlüssel des Objektes (Namen der Arrays).
-     *Mit der For-Of-Schleife wird über die Werte des picObject's (Key's der einzelnen Array's) iteriert und
-     *in einer Konstante gehalten; diese Konstante wird an die nächste Funktion als Parameter übergeben.
-     */
+
     iteratePicObject() {
         const picObjectProps = Object.keys(this.picObject);
 
@@ -90,13 +79,6 @@ export default class PictureGallery {
         }
     }
 
-    /**
-     * Die Funktion liest die Bildernamen aus den Arrays aus und gibt diese mit einem Content für die Überschrift
-     * und dem entsprechenden Pfad
-     * an die nächsten Funktionen weiter.
-     * Der Pfad wird separat gesetzt, um die Thumbnails und Einzelansicht separat ansteuern zu können.
-     * @param {enthält den Array-Schlüssel} arrId
-     */
 
     processArrKeyInHtmlCompatContent(arrId) {
         let imgIdString = '';
@@ -134,12 +116,6 @@ export default class PictureGallery {
         this.insertImages(arrId, imgIdString, picPath, imgAltContent);
     }
 
-    /**
-     * Die Funktion erstellt im Galerie-Bereich einen Container für die einzelnen Bildergalerien 
-     * und fügt die passende Überschrift und die einzelnen Bilder ein.
-     * @param {*enthält den zuvor ausgewerteten ID-Namen für den Container} imgIdString
-     * @param {*enthält den zuvor ausgewerteten Content für das h1-tag} headLineContent
-     */
     buildHtmlContent(imgIdString, headLineContent) {
         let picArea = document.getElementById('gallery-area');
 
@@ -154,15 +130,6 @@ export default class PictureGallery {
         picArea.appendChild(imgContainer);
     }
 
-    /**
-     * Die Funktion iteriert über die Bilder-Arrays im Bilder-Objekt
-     * und speichert den aktuellen Iterations-Wert in einer Variable.
-     * Der Pfad wird zusammengefügt.
-     * Danach wird das HTML-Gerüst erstellt und die Iterations-Werte eingetragen und im HTML eingefügt.
-     * @param {string} arrKey enthält den Schlüssel für das Array
-     * @param {string} conId enthält den ID-String für die einzelne Galerie
-     * @param {string} path enthält den Pfad zum Bild
-     */
 
     insertImages(arrKey, conId, path, altContent) {
         const container = document.getElementById(conId);

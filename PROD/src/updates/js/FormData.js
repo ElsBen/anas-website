@@ -6,10 +6,7 @@ export default class FormData {
         this.userEntries = [];
         this.userSelections = [];
         
-        /**
-         * Werte aus dem Localstorage holen und umwandeln in ein Array.
-         * Leeren des Localstorage 'performance selection', damit dieser nicht Überlastet wird.
-         */
+    
         this.savedInquiry =
             JSON.parse(localStorage.getItem('saveInquiry')) || [];
         
@@ -26,10 +23,7 @@ export default class FormData {
 
         this.userInputSendContent = document.querySelector('.sended-user-input');
     
-        /**
-         * Stellt sicher, dass das Formular vorhanden ist und hält die 
-         * Werte für das Fenster beim erfolglosen oder erfolgreichen Abschicken des Formulars.
-         */
+
         if (this.form){
             this.headlineInputSend = this.userInputSendContent.querySelector('h2');
             this.paragraphInputSend = this.userInputSendContent.querySelector('p');
@@ -43,12 +37,7 @@ export default class FormData {
        
     }
 
-    /**
-     * Holt sich die vorhandenen Werte aus dem Localstorage.
-     * Prüft, ob Form vorhanden ist.
-     * Der Eventlistener wird gesetzt und beim Absenden des Formulars, 
-     * werden die Werte der einzelnen Inputs geholt und in einem Objekt gehalten.
-     */
+
     start() {
         if (this.savedInquiry && this.savedInquiry.length >= 0) {
             this.userEntries = this.savedInquiry;
@@ -59,15 +48,8 @@ export default class FormData {
             this.getInputValuesAndBuildObject();
         }
 
-        // Wird am Schluss nicht mehr benötigt
-        // setInterval(() => {
-        //     console.log(this.userEntries);
-        // }, 10000);
     }
 
-    /**
-     * Öffnet durch Button-Klick, Eingaben richtig Fenster, Eingabe falsch Fenster oder Eingabe erfolgreich Fenster.
-     */
     getUserInfoBtn(){
         this.userInputSendContent.addEventListener('click', (e) => {
                 
@@ -109,13 +91,7 @@ export default class FormData {
         });
     }
 
-    /**
-     * E-mail wird validiert und Form auf Existenz geprüft.
-     * Das Objekt wird in userEntries-Array gepusht und das 
-     * Formular zurückgesetzt.
-     * @param {object} checkEntries enthält die Einträge aus den Input's
-     * @param {array} checkInquiry Werte aus dem localstorage die im Array gehalten werden
-     */
+
     checkEntriesValid(checkEntries) {
 
         if (checkEntries.email.match(this.validEmail) && this.form) {
@@ -139,14 +115,7 @@ export default class FormData {
         this.validatAndBuildSendStateWindow(formattedEntries, entries);
     }
 
-    /**
-     * Die Nutzereinträge werden im Localstorage gehalten.
-     * Das userEntries-Array wird gelöscht 
-     * und mit den neuen Werten aus dem Storage überschrieben.
-     * Localstorage für die Einträge wird gelöscht.
-     * @param {object} saveEntries enthält die Einträge aus den Input's
-     * @param {array} inquiry Werte aus dem localstorage die im Array gehalten werden
-     */
+  
     saveUserEntries(saveEntries) {
         this.userEntries.push(saveEntries);
         localStorage.setItem('saveInquiry', JSON.stringify(saveEntries));
@@ -157,13 +126,7 @@ export default class FormData {
         this.getSavedPerformanceSelection()
     }
     
-    /**
-     * Ein neues Objekt für die Performance-Selection wird erstellt 
-     * und auf die übergebene Selection wird iteriert.
-     * Hier werden die Werte und der Index als Parameter gehalten, 
-     * als Schlüssel-Werte Paare im erstellten Objekt eingefügt
-     * und im Einträge-Array hinzugefügt.
-     */
+
     getSavedPerformanceSelection(){
         let performanceSelection  = {}
         
@@ -176,12 +139,7 @@ export default class FormData {
         this.validatAndBuildSendStateWindow(true);
     }
 
-    /**
-     * Bei erfolgreichem Absenden (oder nicht erfolgreich) 
-     * wird hier der entsprechende Text und die Farbe gesetzt.
-     * @param {boolean, array, string} state Wird zum Prüfen des Status verwendet.
-     * @param {object} entries Speichert die Einträge im aktuellen Durchlauf global.
-     */
+  
     validatAndBuildSendStateWindow(state, entries){
         let headline;
         let content;
@@ -241,14 +199,7 @@ export default class FormData {
         }
     }
 
-    /**
-     * Inhalt und Styling werden für das Informationsfenster gesetzt.
-     * So kann der Code für alle Info-Fenster genutzt werden.
-     * @param {string} headline 
-     * @param {string} content 
-     * @param {string} btnContent 
-     * @param {string} color 
-     */
+
     buildUserInformationWindow(headline, content, btnContent, color){
         this.headlineInputSend.textContent = headline;
         this.paragraphInputSend.textContent = content;
@@ -260,9 +211,6 @@ export default class FormData {
         this.openUserInputSendWindow();
     }
 
-    /**
-     * Fenster für die User-Info des Formulars wird sichtbar gemacht.
-     */
     openUserInputSendWindow() {
         this.userInputSend.style.display = 'flex';
     }

@@ -2,9 +2,7 @@ import FormData from './FormData.js'
 
 export default class PerformanceSideData {
 
-    /**
-     * Global gesetzte Variablen. Alle Funktionen können darauf zugreifen.
-     */
+  
 
     constructor() {
         this.checkBoxes = document.querySelectorAll('input');
@@ -17,9 +15,7 @@ export default class PerformanceSideData {
         this.selection = '';
     }
 
-    /**
-     * Über Checkboxen iterieren und filtern der gecheckten Boxen.
-     */
+   
     checkInfo() {
         Array.from(this.performanceBtn).forEach((button) => {
             button.addEventListener('click', () => {
@@ -36,12 +32,7 @@ export default class PerformanceSideData {
         this.iterateSubmitBtn();
     }
 
-    /**
-     * Die ID der ausgewählten Checkbox wird übergeben 
-     * und Ihre ID mit den Strings verglichen.
-     * Bei Übereinstimmung wird die globale Variable selection gefüllt. 
-     * @param {string} selectionId ID der ausgewählten Checkbox
-     */
+
     validateUserSelection(selectionId) {
         switch (selectionId) {
             case 'basic-shooting':
@@ -78,20 +69,12 @@ export default class PerformanceSideData {
         this.saveSelection();
     }
 
-    /**
-     * Gibt den Wert an das Array userSelections im formDataModule weiter.
-     * Danach werden die Daten im localstorage gespeichert, damit es nicht zum Datenverlust 
-     * beim Aufruf des FormData-Modul's kommt. 
-     */
+
     saveSelection() {
         this.userSelections.push(this.selection);
         localStorage.setItem('savePerformanceSelection', JSON.stringify(this.userSelections));
     }
 
-    /**
-     * submitButton wird in ein Array umgewandelt, damit darüber iteriert wird
-     * und auf jeden einzelnen Button eine href zum Formular gegeben werden kann. 
-     */
     iterateSubmitBtn(){
         Array.from(this.submitButton).forEach(e => {
             e.addEventListener('click', ()=> {

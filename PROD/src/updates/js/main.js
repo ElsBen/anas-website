@@ -6,7 +6,7 @@ import GalleryView from './GalleryView.js';
 import FormData from './FormData.js';
 import PerformanceSideData from './PerformanceSideData.js';
 
-// Logik für die Backgroundimage Scroll-Animation.
+
 let runState = false;
 
 document.addEventListener('wheel',(e) => {
@@ -22,12 +22,7 @@ if(!runState){
 };
 
 
-// PICTURE-GALLERY
 
-/**
- * Mit diesem Eventlistener wird abgewartet, damit das DOM vollständig geladen wird,
- * bevor die Logik für die Galerie ausgeführt wird.
- */
 document.addEventListener('DOMContentLoaded', () => {
     const picGalerieStart = new PictureGallery();
     picGalerieStart.htmlContentCheck();
@@ -36,12 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
     galerieViewStart.iterateOverClickableImages();
 });
 
-// Logik (Aufruf) für das Validieren und Erstellen der Formulardaten.
+
 
 const formdataStart = new FormData();
 formdataStart.start();
 
-// PERFORMANCE-SIDE
+
 
 const performanceSide = new PerformanceSideData();
 performanceSide.checkInfo();
