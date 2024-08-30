@@ -1108,7 +1108,7 @@ body {
 }
 
 #gallery-area h1 {
-    padding: var(--spacing-md-2) var(--spacing-zero) var(--spacing-md-2) var(--special-spacing-md-7);
+    padding: var(--spacing-md-2) var(--spacing-zero) var(--spacing-md-2) var(--spacing-zero);
     font-size: var(--font-size-lg);
     color: var(--selection-color);
     text-align: center;
