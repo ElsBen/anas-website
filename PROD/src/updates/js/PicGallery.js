@@ -1,61 +1,61 @@
 export default class PictureGallery {
     constructor() {
 
-        this.specialPicPath = './src/img/galerie-bibliothek/besonderes/';
-        this.weddingPicPath = './src/img/galerie-bibliothek/hochzeiten/';
-        this.eventsPicPath = './src/img/galerie-bibliothek/events/';
-        this.shootingPicPath = './src/img/galerie-bibliothek/shootings/';
+        this.galOnePicPath = './src/img/galerie-bibliothek/gallery_1/';
+        this.galTwoPicPath = './src/img/galerie-bibliothek/gallery_2/';
+        this.galThreePicPath = './src/img/galerie-bibliothek/gallery_3/';
+        this.galFourPicPath = './src/img/galerie-bibliothek/gallery_4/';
 
         this.forThumbnails = 'thumbnails/';
 
     
         this.picObject = {
-            specialPicArray: [
-                "special001.avif",
-                "special002.avif",
-                "special003.avif",
-                "special004.avif",
-                "special005.avif",
-                "special006.avif",
-                "special007.avif",
-                "special008.avif",
-                "special009.avif",
+            galOnePicArray: [
+                "gallery_1_001.avif",
+                "gallery_1_002.avif",
+                "gallery_1_003.avif",
+                "gallery_1_004.avif",
+                "gallery_1_005.avif",
+                "gallery_1_006.avif",
+                "gallery_1_007.avif",
+                "gallery_1_008.avif",
+                "gallery_1_009.avif",
             ],
 
-            weddingPicArray: [
-                "wedding001.avif",
-                "wedding002.avif",
-                "wedding003.avif",
-                "wedding004.avif",
-                "wedding005.avif",
-                "wedding006.avif",
-                "wedding007.avif",
-                "wedding008.avif",
-                "wedding009.avif",
+            galTwoPicArray: [
+                "gallery_2_001.avif",
+                "gallery_2_002.avif",
+                "gallery_2_003.avif",
+                "gallery_2_004.avif",
+                "gallery_2_005.avif",
+                "gallery_2_006.avif",
+                "gallery_2_007.avif",
+                "gallery_2_008.avif",
+                "gallery_2_009.avif",
             ],
 
-            eventsPicArray: [
-                "event001.avif",
-                "event002.avif",
-                "event003.avif",
-                "event004.avif",
-                "event005.avif",
-                "event006.avif",
-                "event007.avif",
-                "event008.avif",
-                "event009.avif",
+            galThreePicArray: [
+                "gallery_3_001.avif",
+                "gallery_3_002.avif",
+                "gallery_3_003.avif",
+                "gallery_3_004.avif",
+                "gallery_3_005.avif",
+                "gallery_3_006.avif",
+                "gallery_3_007.avif",
+                "gallery_3_008.avif",
+                "gallery_3_009.avif",
             ],
 
-            shootingPicArray: [
-                "shooting001.avif",
-                "shooting002.avif",
-                "shooting003.avif",
-                "shooting004.avif",
-                "shooting005.avif",
-                "shooting006.avif",
-                "shooting007.avif",
-                "shooting008.avif",
-                "shooting009.avif",
+            galFourPicArray: [
+                "gallery_4_001.avif",
+                "gallery_4_002.avif",
+                "gallery_4_003.avif",
+                "gallery_4_004.avif",
+                "gallery_4_005.avif",
+                "gallery_4_006.avif",
+                "gallery_4_007.avif",
+                "gallery_4_008.avif",
+                "gallery_4_009.avif",
             ],
         };
         
@@ -87,29 +87,29 @@ export default class PictureGallery {
         let picPath = '';
 
         switch (arrId) {
-            case 'specialPicArray':
-                imgIdString = 'special-galerie';
+            case 'galOnePicArray':
+                imgIdString = 'gallery-1';
                 imgAltContent = 'Bild in der besondere Fotogalerie'
                 headLineContent = 'Besondere Fotogalerie';
-                picPath = this.specialPicPath;
+                picPath = this.galOnePicPath;
                 break;
-            case 'weddingPicArray':
-                imgIdString = 'wedding-galerie';
-                imgAltContent = 'Bild in der Hochzeit`s Fotogalerie'
-                headLineContent = 'Hochzeits Galerie';
-                picPath = this.weddingPicPath;
+            case 'galTwoPicArray':
+                imgIdString = 'gallery-2';
+                imgAltContent = 'Bild in der Architektur Fotogalerie'
+                headLineContent = 'Architektur Galerie';
+                picPath = this.galTwoPicPath;
                 break;
-            case 'eventsPicArray':
-                imgIdString = 'event-galerie';
+            case 'galThreePicArray':
+                imgIdString = 'gallery-3';
                 imgAltContent = 'Bild in der Event Fotogalerie'
                 headLineContent = 'Event Galerie';
-                picPath = this.eventsPicPath;
+                picPath = this.galThreePicPath;
                 break;
-            case 'shootingPicArray':
-                imgIdString = 'shooting-galerie';
+            case 'galFourPicArray':
+                imgIdString = 'gallery-4';
                 imgAltContent = 'Bild in der Shooting Fotogalerie'
                 headLineContent = 'Fotoshooting Galerie';
-                picPath = this.shootingPicPath;
+                picPath = this.galFourPicPath;
                 break;
         }
         this.buildHtmlContent(imgIdString, headLineContent);
