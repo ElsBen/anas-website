@@ -1,3 +1,5 @@
+"use strict"
+
 import PictureGallery from './PicGallery.js';
 
 export default class GalleryView {

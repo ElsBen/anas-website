@@ -1,3 +1,5 @@
+"use strict"
+
 import FormData from './FormData.js'
 
 export default class PerformanceSideData {
