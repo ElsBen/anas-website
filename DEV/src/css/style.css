@@ -1159,13 +1159,14 @@ body {
 .gallery-element-container {
     max-width: max-content;
     max-height: max-content;
-    min-width: var(--special-spacing-lg-8);
+    min-width: var(--special-spacing-lg-4);
     min-height: var(--special-spacing-lg-4);
     position: relative;
 }
 
 .image-view-container {
     text-align: center;
+    width: max-content;
 }
 
 .image-view-container > img {
@@ -1180,7 +1181,7 @@ body {
     width: var(--responsive-spacing-21);
     text-align: center;
     position: absolute;
-    bottom:  var(--special-spacing-md-6);
+    bottom:  var(--special-spacing-md-6)
 }
 
 .image-view-navigation > .prev-button{
@@ -1227,6 +1228,15 @@ body {
     scrollbar-width: none;
 }
 
+@media (max-height: 380px){
+    .image-view-navigation > .prev-button{
+        margin-left: var(--special-spacing-md-2);
+    }
+    
+    .image-view-navigation > .next-button{
+        margin-right: var(--special-spacing-md-2);
+    }
+}
 /* ### KONTAKTFORMULAR ### */
 
 #background-image-kontakt {
