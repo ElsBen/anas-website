@@ -1349,6 +1349,7 @@ form > div > .no-resize {
 .sended-user-input > p {
     padding-bottom: var(--standard-spacing-sm);
     white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 .user-inf-btn{

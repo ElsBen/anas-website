@@ -225,7 +225,7 @@ export default class FormData {
                 });
                 
                 content = content.replace(/["\\\[\]]/g, '');
-                content = content.split(/, Auswahl:/g).join('\n\nAuswahl:\n')
+                content = content.split(/, Auswahl:/g).join('\n\nAuswahl:\n');
                 content = content.replace(/Nachricht:/g, '\nNachricht:\n');
                 btnContent = 'Ja';
                 color = this.colorSuccess;
