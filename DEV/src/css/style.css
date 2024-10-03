@@ -1159,8 +1159,6 @@ body {
 .gallery-element-container {
     max-width: max-content;
     max-height: max-content;
-    min-width: var(--special-spacing-lg-4);
-    min-height: var(--special-spacing-lg-4);
     position: relative;
 }
 
